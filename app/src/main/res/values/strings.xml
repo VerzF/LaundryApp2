@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LaundryApp</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_notifikasi">Notifikasi</string>
+    <string name="placeholder_search">Mau pesan apa hari ini?\n</string>
+    <string name="section_menu">Pilihan Layanan</string>
+</resources>
