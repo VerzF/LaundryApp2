@@ -21,10 +21,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 import com.trisulaforce.laundryapp.ui.navigation.NavigationItem
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.screen.beranda.Beranda
-import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 
 @Composable
 fun LaundryApp(
