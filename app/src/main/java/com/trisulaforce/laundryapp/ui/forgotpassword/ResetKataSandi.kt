@@ -45,6 +45,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
 class ResetKataSandi : AppCompatActivity() {
@@ -54,7 +56,7 @@ class ResetKataSandi : AppCompatActivity() {
 }
 
 @Composable
-fun ResetKataSandi(modifier: Modifier = Modifier) {
+fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .requiredWidth(width = 360.dp)
@@ -118,7 +120,7 @@ fun ResetKataSandi(modifier: Modifier = Modifier) {
                             .wrapContentHeight(align = Alignment.CenterVertically))
                 }
                 Button(
-                    onClick = { },
+                    onClick = { navController.navigate("KataSandiBaru") },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -146,8 +148,10 @@ fun ResetKataSandi(modifier: Modifier = Modifier) {
             contentDescription = "Vector 3",
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = (-6).dp,
-                    y = 617.dp)
+                .offset(
+                    x = (-6).dp,
+                    y = 617.dp
+                )
                 .requiredWidth(width = 444.dp)
                 .requiredHeight(height = 183.dp))
     }
@@ -156,5 +160,6 @@ fun ResetKataSandi(modifier: Modifier = Modifier) {
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
 private fun ResetKataSandiPreview() {
-    ResetKataSandi(Modifier)
+    val navController = rememberNavController()
+    ResetKataSandi(navController, Modifier)
 }

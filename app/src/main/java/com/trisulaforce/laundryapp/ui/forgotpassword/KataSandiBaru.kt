@@ -51,6 +51,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
 class KataSandiBaru : AppCompatActivity() {
@@ -60,7 +62,7 @@ class KataSandiBaru : AppCompatActivity() {
 }
 
 @Composable
-fun KataSandiBaru(modifier: Modifier = Modifier) {
+fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -180,7 +182,7 @@ fun KataSandiBaru(modifier: Modifier = Modifier) {
                     }
                 }
                 Button(
-                    onClick = { },
+                    onClick = {navController.navigate("KonfirmasiKataSandi")},
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -220,5 +222,6 @@ fun KataSandiBaru(modifier: Modifier = Modifier) {
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
 private fun KataSandiBaruPreview() {
-    KataSandiBaru(Modifier)
+    val navController = rememberNavController()
+    KataSandiBaru(navController = navController, modifier = Modifier)
 }

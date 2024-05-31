@@ -51,6 +51,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
 class KonfirmasiKataSandi : AppCompatActivity() {
@@ -60,7 +62,7 @@ class KonfirmasiKataSandi : AppCompatActivity() {
 }
 
 @Composable
-fun KonfirmasiKataSandi(modifier: Modifier = Modifier) {
+fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .requiredWidth(width = 360.dp)
@@ -123,7 +125,7 @@ fun KonfirmasiKataSandi(modifier: Modifier = Modifier) {
                     }
                 }
                 Button(
-                    onClick = { },
+                    onClick = { navController.navigate("login")},
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -161,5 +163,6 @@ fun KonfirmasiKataSandi(modifier: Modifier = Modifier) {
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
 private fun KonfirmasiKataSandiPreview() {
-    KonfirmasiKataSandi(Modifier)
+    val navController = rememberNavController()
+    KonfirmasiKataSandi(navController = navController, modifier = Modifier)
 }

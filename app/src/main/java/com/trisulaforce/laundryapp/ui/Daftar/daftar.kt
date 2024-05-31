@@ -46,18 +46,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 class Daftar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            DaftarScreen()
+            val navController = rememberNavController()
+            DaftarScreen(navController)
         }
     }
 }
 
 @Composable
-fun DaftarScreen(modifier: Modifier = Modifier) {
+fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .requiredWidth(360.dp)
@@ -205,7 +208,7 @@ fun DaftarScreen(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.weight(1f))
 
             Button(
-                onClick = { },
+                onClick = { navController.navigate("login") },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                 contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -248,5 +251,6 @@ fun DaftarScreen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun DaftarPreview() {
-    DaftarScreen()
+    val navController = rememberNavController()
+    DaftarScreen(navController)
 }
