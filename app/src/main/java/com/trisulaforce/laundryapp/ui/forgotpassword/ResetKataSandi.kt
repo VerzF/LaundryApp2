@@ -1,9 +1,5 @@
 package com.trisulaforce.laundryapp.ui.forgotpassword
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -48,15 +44,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
-
-class ResetKataSandi : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier) {
+fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
     Box(
         modifier = modifier
             .requiredWidth(width = 360.dp)
@@ -83,7 +74,7 @@ fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier) 
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = {  }
+                        onClick = navigateBack
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -120,7 +111,7 @@ fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier) 
                             .wrapContentHeight(align = Alignment.CenterVertically))
                 }
                 Button(
-                    onClick = { navController.navigate("KataSandiBaru") },
+                    onClick = { navController.navigate(Screen.KataSandiBaru.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -161,5 +152,5 @@ fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier) 
 @Composable
 private fun ResetKataSandiPreview() {
     val navController = rememberNavController()
-    ResetKataSandi(navController, Modifier)
+    ResetKataSandi(navController, Modifier, navigateBack = { navController.popBackStack() })
 }

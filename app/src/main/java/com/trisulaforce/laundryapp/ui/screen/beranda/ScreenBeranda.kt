@@ -35,24 +35,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
 
 @Composable
-fun Beranda(modifier: Modifier = Modifier) {
+fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .requiredWidth(width = 360.dp)
-            .requiredHeight(height = 800.dp)
-            .clip(shape = RoundedCornerShape(24.dp))
+            .fillMaxWidth()
             .background(color = Color.White)
     ) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxHeight()
-                .requiredWidth(width = 360.dp)
                 .weight(weight = 1f)
                 .padding(
                     top = 12.dp,
@@ -179,7 +178,8 @@ fun Beranda(modifier: Modifier = Modifier) {
                     }
                 }
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start)
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Box(
                         modifier = Modifier
@@ -301,7 +301,7 @@ fun Beranda(modifier: Modifier = Modifier) {
                             .padding()
                     ) {
                         Text(
-                            text = "Deskripsi & Cara Penggunaan",
+                            text = "Deskripsi Aplikasi",
                             color = Color.White,
                             style = TextStyle(
                                 fontSize = 12.sp,
@@ -338,7 +338,7 @@ fun Beranda(modifier: Modifier = Modifier) {
                         verticalArrangement = Arrangement.spacedBy(9.dp, Alignment.CenterVertically)
                     ) {
                         Text(
-                            text = "Charity",
+                            text = "Cara Penggunaan",
                             color = Color.White,
                             style = TextStyle(
                                 fontSize = 12.sp,
@@ -370,5 +370,6 @@ fun Beranda(modifier: Modifier = Modifier) {
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
 private fun BerandaPreview() {
-    Beranda(Modifier)
+    val navController = rememberNavController()
+    Beranda(navController, Modifier)
 }

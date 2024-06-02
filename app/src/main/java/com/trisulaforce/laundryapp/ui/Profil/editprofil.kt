@@ -42,10 +42,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
 @Composable
-fun editprofil(modifier: Modifier = Modifier) {
+fun editprofil(modifier: Modifier = Modifier, navigateBack: () -> Unit) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -63,7 +64,7 @@ fun editprofil(modifier: Modifier = Modifier) {
                 )
             },
             navigationIcon = {
-                IconButton(onClick = { /* Handle back navigation */ }) {
+                IconButton(onClick = navigateBack) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "Back",
@@ -212,5 +213,6 @@ fun SaveButton() {
 @Preview(showBackground = true, widthDp = 360, heightDp = 800)
 @Composable
 private fun editprofilPreview() {
-    editprofil()
+    val navController = rememberNavController()
+    editprofil(navigateBack = { navController.popBackStack() })
 }

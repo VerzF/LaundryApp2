@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 
 class Masuk : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +52,7 @@ class Masuk : AppCompatActivity() {
 }
 
 @Composable
-fun Masuk(modifier: Modifier = Modifier) {
+fun Masuk(modifier: Modifier = Modifier, navigateBack: () -> Unit) {
     Box(
         modifier = modifier
             .requiredWidth(360.dp)
@@ -81,7 +82,7 @@ fun Masuk(modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 30.dp)
                 ) {
-                    IconButton(onClick = { /* Handle back action */ }) {
+                    IconButton(onClick = navigateBack) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back Icon",
@@ -219,5 +220,6 @@ fun Masuk(modifier: Modifier = Modifier) {
     @Preview(widthDp = 360, heightDp = 800)
     @Composable
     private fun MasukPreview() {
-        Masuk(Modifier)
+        val navController = rememberNavController()
+        Masuk(Modifier, navigateBack = { navController.popBackStack() })
     }

@@ -1,9 +1,5 @@
 package com.trisulaforce.laundryapp.ui.forgotpassword
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -54,15 +50,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
-class KataSandiBaru : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
 
 @Composable
-fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
+fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -88,7 +80,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = {  }
+                        onClick = navigateBack
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -182,7 +174,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
                     }
                 }
                 Button(
-                    onClick = {navController.navigate("KonfirmasiKataSandi")},
+                    onClick = {navController.navigate(Screen.KonfirmasiKataSandi.route)},
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -223,5 +215,5 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
 @Composable
 private fun KataSandiBaruPreview() {
     val navController = rememberNavController()
-    KataSandiBaru(navController = navController, modifier = Modifier)
+    KataSandiBaru(navController = navController, modifier = Modifier, navigateBack = { navController.popBackStack() })
 }

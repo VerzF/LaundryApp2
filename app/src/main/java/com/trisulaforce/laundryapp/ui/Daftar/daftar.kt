@@ -1,8 +1,5 @@
 package com.trisulaforce.laundryapp.ui.Daftar
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -49,15 +46,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
-class Daftar : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            val navController = rememberNavController()
-            DaftarScreen(navController)
-        }
-    }
-}
+import com.trisulaforce.laundryapp.ui.navigation.Screen
+
 
 @Composable
 fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier) {
@@ -208,7 +198,7 @@ fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.weight(1f))
 
             Button(
-                onClick = { navController.navigate("login") },
+                onClick = { navController.navigate(Screen.Masuk.route) },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                 contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
                 modifier = Modifier.fillMaxWidth()

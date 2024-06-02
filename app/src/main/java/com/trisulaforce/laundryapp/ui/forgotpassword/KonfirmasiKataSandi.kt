@@ -54,12 +54,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
-class KonfirmasiKataSandi : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
 
 @Composable
 fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modifier) {
@@ -125,7 +121,7 @@ fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modif
                     }
                 }
                 Button(
-                    onClick = { navController.navigate("login")},
+                    onClick = { navController.navigate(Screen.Masuk.route)},
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,

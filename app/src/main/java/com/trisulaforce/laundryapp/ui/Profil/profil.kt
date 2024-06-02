@@ -39,10 +39,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
 @Composable
-fun ProfilScreen() {
+fun ProfilScreen(navController: NavController) {
     Scaffold(
         bottomBar = { BottomNavigationBar() }
     ) {
@@ -253,6 +255,7 @@ fun BottomNavItem(
 @Preview(showBackground = true, widthDp = 360, heightDp = 800)
 @Composable
 fun ProfilScreenPreview() {
-    ProfilScreen()
+    val navController = rememberNavController()
+    ProfilScreen(navController = navController)
 }
 

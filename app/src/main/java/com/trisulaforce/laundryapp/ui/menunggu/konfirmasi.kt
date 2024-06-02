@@ -27,10 +27,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun Konfirmasi(modifier: Modifier = Modifier) {
+fun Konfirmasi(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .requiredWidth(360.dp)
@@ -86,7 +89,7 @@ fun Konfirmasi(modifier: Modifier = Modifier) {
         )
 
         Button(
-            onClick = { /* TODO: Handle button click */ },
+            onClick = { navController.navigate(Screen.ScreenBeranda.route) },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
             shape = RoundedCornerShape(100.dp),
             modifier = Modifier
@@ -110,5 +113,6 @@ fun Konfirmasi(modifier: Modifier = Modifier) {
 @Preview(showBackground = true, widthDp = 360, heightDp = 800)
 @Composable
 private fun KonfirmasiPreview() {
-    Konfirmasi()
+    val navController = rememberNavController()
+    Konfirmasi(navController = navController)
 }

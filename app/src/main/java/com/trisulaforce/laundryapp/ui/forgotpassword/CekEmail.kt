@@ -48,15 +48,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
-class CekEmail : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
 
 @Composable
-fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
+fun CekEmail(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
     Box(
         modifier = modifier
             .requiredWidth(width = 360.dp)
@@ -83,7 +79,7 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = {  }
+                        onClick = navigateBack
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -180,7 +176,7 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                 ) {
                     Button(
-                        onClick = { navController.navigate("ResetKataSandi") },
+                        onClick = { navController.navigate(Screen.ResetKataSandi.route) },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                         contentPadding = PaddingValues(
                             horizontal = 16.dp,
@@ -254,5 +250,5 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
 @Composable
 private fun CekEmailPreview() {
     val navController = rememberNavController()
-    CekEmail(navController = navController, modifier = Modifier)
+    CekEmail(navController = navController, modifier = Modifier, navigateBack = { navController.popBackStack() })
 }

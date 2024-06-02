@@ -1,5 +1,6 @@
 package com.trisulaforce.laundryapp
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -21,6 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.trisulaforce.laundryapp.Profil.ProfilScreen
 import com.trisulaforce.laundryapp.ui.navigation.NavigationItem
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.screen.beranda.Beranda
@@ -48,27 +50,45 @@ fun LaundryApp(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                Beranda()
+                Beranda(navController)
             }
-            /*
-            composable(Screen.Profile.route) {
-                ProfileScreen()
-            }
-            */
 
+            composable(Screen.Profile.route){
+                ProfilScreen(navController)
+            }
+
+            /*composable(Screen.LupaKataSandi.route){
+                LupaKataSandi()
+            }
+
+            composable(Screen.CekEmail.route){
+                CekEmail()
+            }
+
+            composable(Screen.ResetKataSandi.route){
+                ResetKataSandi()
+            }
+
+            composable(Screen.KonfirmasiKataSandi.route){
+                KonfirmasiKataSandi()
+            }
+
+            composable(Screen.KataSandiBaru.route){
+                KataSandiBaru()
+            }*/
         }
     }
 }
 
 @Composable
 private fun BottomBar(
-    navContoller: NavHostController,
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     NavigationBar(
         modifier = modifier,
     ) {
-        val navBackStackEntry by navContoller.currentBackStackEntryAsState()
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         val navigationItems = listOf(
             NavigationItem(
@@ -98,8 +118,8 @@ private fun BottomBar(
                 label = { Text(item.title) },
                 selected = currentRoute == item.screen.route,
                 onClick = {
-                    navContoller.navigate(item.screen.route) {
-                        popUpTo(navContoller.graph.findStartDestination().id) {
+                    navController.navigate(item.screen.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
                             saveState = true
                         }
                         restoreState = true

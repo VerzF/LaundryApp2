@@ -1,7 +1,5 @@
 package com.trisulaforce.laundryapp.ui.forgotpassword
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -43,15 +41,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
-class LupaKataSandi : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
 
 @Composable
-fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
+fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
     Box(
         modifier = modifier
             .requiredWidth(width = 360.dp)
@@ -78,7 +72,7 @@ fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = {  }
+                        onClick = navigateBack
                         ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -128,7 +122,7 @@ fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
                     )
                 }
                 Button(
-                    onClick = { navController.navigate("CekEmail") },
+                    onClick = { navController.navigate(Screen.CekEmail.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -167,5 +161,5 @@ fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
 @Composable
 private fun LupaKataSandiPreview() {
     val navController = rememberNavController()
-    LupaKataSandi(navController = navController, modifier = Modifier)
+    LupaKataSandi(navController = navController, modifier = Modifier, navigateBack = { navController.popBackStack() })
 }
