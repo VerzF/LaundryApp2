@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.ui.forgotpassword
+package com.trisulaforce.laundryapp.ui.screen.forgotpassword
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,8 +20,6 @@ import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -30,7 +28,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,9 +40,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,17 +49,18 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
-class KataSandiBaru : AppCompatActivity() {
+class ResetKataSandi : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 }
 
 @Composable
-fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
+fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .fillMaxSize()
+            .requiredWidth(width = 360.dp)
+            .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
             .background(Color.White)
     ) {
@@ -114,7 +109,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Masukkan password anda yang baru. Pastikan password anda yang baru berbeda dari password anda yang sebelumnya untuk keamanan.",
+                        text = "Kata sandi anda telah berhasil diatur ulang. Klik konfirmasi untuk atur kata sandi baru.",
                         color = Color.Black.copy(alpha = 0.8f),
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
@@ -123,66 +118,9 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .wrapContentHeight(align = Alignment.CenterVertically))
-                    Column (
-                        verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        var password by rememberSaveable { mutableStateOf("") }
-                        var passwordHidden by rememberSaveable { mutableStateOf(true) }
-                        val visibilityIcon = painterResource(id = if (passwordHidden) R.drawable.ic_visibility else R.drawable.ic_visibility_off)
-
-                        OutlinedTextField(
-                            value = password,
-                            onValueChange = { password = it },
-                            singleLine = true,
-                            label = { Text("Kata sandi baru") },
-                            visualTransformation = if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                            leadingIcon = {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.ic_lock),
-                                    contentDescription = "Password"
-                                )
-                            },
-                            trailingIcon = {
-                                IconButton(onClick = { passwordHidden = !passwordHidden }) {
-                                    // Please provide localized description for accessibility services
-                                    val description = if (passwordHidden) "Show password" else "Hide password"
-                                    Image(painter = visibilityIcon, contentDescription = description)
-                                }
-                            },
-                            shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                        OutlinedTextField(
-                            value = password,
-                            onValueChange = { password = it },
-                            singleLine = true,
-                            label = { Text("Konfirmasi kata sandi") },
-                            visualTransformation = if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                            leadingIcon = {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.ic_lock),
-                                    contentDescription = "Password"
-                                )
-                            },
-                            trailingIcon = {
-                                IconButton(onClick = { passwordHidden = !passwordHidden }) {
-                                    // Please provide localized description for accessibility services
-                                    val description = if (passwordHidden) "Show password" else "Hide password"
-                                    Image(painter = visibilityIcon, contentDescription = description)
-                                }
-                            },
-                            shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
                 }
                 Button(
-                    onClick = {navController.navigate("KonfirmasiKataSandi")},
+                    onClick = { navController.navigate("KataSandiBaru") },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -191,7 +129,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Perbarui",
+                        text = "Konfirmasi",
                         color = Color.White,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
@@ -221,7 +159,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
-private fun KataSandiBaruPreview() {
+private fun ResetKataSandiPreview() {
     val navController = rememberNavController()
-    KataSandiBaru(navController = navController, modifier = Modifier)
+    ResetKataSandi(navController, Modifier)
 }

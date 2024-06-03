@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.ui.forgotpassword
+package com.trisulaforce.laundryapp.ui.screen.forgotpassword
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
