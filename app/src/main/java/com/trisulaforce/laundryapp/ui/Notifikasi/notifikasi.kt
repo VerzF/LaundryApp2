@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.Notifikasi
+package com.trisulaforce.laundryapp.ui.Notifikasi
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

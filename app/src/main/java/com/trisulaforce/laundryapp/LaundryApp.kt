@@ -1,6 +1,5 @@
 package com.trisulaforce.laundryapp
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -23,6 +22,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.Profil.ProfilScreen
+import com.trisulaforce.laundryapp.ui.forgotpassword.CekEmail
+import com.trisulaforce.laundryapp.ui.forgotpassword.LupaKataSandi
 import com.trisulaforce.laundryapp.ui.navigation.NavigationItem
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.screen.beranda.Beranda
@@ -58,14 +59,14 @@ fun LaundryApp(
             }
 
             /*composable(Screen.LupaKataSandi.route){
-                LupaKataSandi()
-            }
+                LupaKataSandi(navController, { navController.popBackStack() })
+            }*/
 
             composable(Screen.CekEmail.route){
-                CekEmail()
+                CekEmail(navController, { navController.popBackStack() })
             }
 
-            composable(Screen.ResetKataSandi.route){
+            /*composable(Screen.ResetKataSandi.route){
                 ResetKataSandi()
             }
 

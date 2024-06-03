@@ -52,9 +52,9 @@ import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 
 @Composable
-fun CekEmail(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
+fun CekEmail(navController: NavController, navigateBack: () -> Unit) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
@@ -250,5 +250,5 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier, naviga
 @Composable
 private fun CekEmailPreview() {
     val navController = rememberNavController()
-    CekEmail(navController = navController, modifier = Modifier, navigateBack = { navController.popBackStack() })
+    CekEmail(navController = navController, navigateBack = { navController.popBackStack() })
 }

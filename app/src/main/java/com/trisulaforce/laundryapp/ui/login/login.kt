@@ -1,7 +1,5 @@
-package com.trisulaforce.laundryapp
+package com.trisulaforce.laundryapp.ui.login
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -25,6 +23,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.trisulaforce.laundryapp.R
 
 @Composable
 fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
@@ -160,7 +159,7 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateB
                         modifier = Modifier.padding(start = 8.dp)
                     )
                 }
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(4.dp))
                 Button(
                     onClick = { navController.navigate("login") },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
@@ -181,7 +180,6 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateB
                         modifier = Modifier.wrapContentHeight(align = Alignment.CenterVertically)
                     )
                 }
-                Spacer(modifier = Modifier.height(16.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center,
