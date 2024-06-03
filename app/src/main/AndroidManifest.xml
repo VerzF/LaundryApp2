@@ -13,21 +13,6 @@
         android:theme="@style/Theme.LaundryApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.screen.forgotpassword.KonfirmasiKataSandi"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screen.forgotpassword.KataSandiBaru"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screen.forgotpassword.ResetKataSandi"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screen.forgotpassword.CekEmail"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screen.forgotpassword.LupaKataSandi"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
