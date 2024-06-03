@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.ui.forgotpassword
+package com.trisulaforce.laundryapp.ui.screen.forgotpassword
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

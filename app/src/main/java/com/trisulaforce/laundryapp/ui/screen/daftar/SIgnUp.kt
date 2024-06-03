@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.ui.Daftar
+package com.trisulaforce.laundryapp.ui.screen.daftar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

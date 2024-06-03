@@ -1,11 +1,7 @@
-package com.trisulaforce.laundryapp.ui.forgotpassword
+package com.trisulaforce.laundryapp.ui.screen.forgotpassword
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,21 +12,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,9 +33,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,13 +45,13 @@ import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 
 @Composable
-fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modifier) {
+fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
     Box(
         modifier = modifier
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
-            .background(Color.White)
+            .background(color = Color.White)
     ) {
         Column(
             modifier = Modifier
@@ -72,75 +59,87 @@ fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modif
                 .requiredHeight(height = 800.dp)
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.CenterVertically),
+                verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.Top),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 24.dp,
-                        end = 24.dp,
-                        top = 24.dp,
-                        bottom = 120.dp)
+                    .padding(all = 24.dp)
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.successful),
-                    contentDescription = "successful",
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .requiredSize(size = 104.dp))
+                        .requiredWidth(width = 312.dp)
+                ) {
+                    IconButton(
+                        onClick = navigateBack
+                        ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_leftarrow),
+                            contentDescription = "Icons",
+                            tint = Color(0xff465d91))
+                    }
+                    Text(
+                        text = "Lupa Kata Sandi",
+                        color = Color(0xff465d91),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 1.27.em,
+                        style = TextStyle(
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold),
+                        modifier = Modifier
+                            .wrapContentHeight(align = Alignment.CenterVertically))
+                    IconButton(onClick = {  }) { }
+                }
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top),
+                    verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Top),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
                     Text(
-                            text = "Sukses",
-                            color = Color(0xff1e1e1e),
-                            textAlign = TextAlign.Center,
-                            lineHeight = 1.27.em,
-                            style = TextStyle(
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.Bold),
-                            modifier = Modifier
-                                .wrapContentHeight(align = Alignment.CenterVertically))
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Top),
-                        horizontalAlignment = Alignment.CenterHorizontally,
+                        text = "Masukkan e-mail anda untuk mengatur ulang password anda",
+                        color = Color.Black.copy(alpha = 0.8f),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 1.43.em,
+                        style = TextStyle(
+                            fontSize = 14.sp),
                         modifier = Modifier
                             .fillMaxWidth()
-                    ) {
-                        Text(
-                            text = "Selamat Kata sandi anda telah diubah. Klik selanjutnya untuk masuk",
-                            color = Color.Black.copy(alpha = 0.8f),
-                            textAlign = TextAlign.Center,
-                            lineHeight = 1.43.em,
-                            style = TextStyle(
-                                fontSize = 14.sp),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .wrapContentHeight(align = Alignment.CenterVertically))
-                    }
+                            .wrapContentHeight(align = Alignment.CenterVertically))
+                    var text by rememberSaveable { mutableStateOf("") }
+                    OutlinedTextField(
+                        value = text,
+                        onValueChange = { text = it },
+                        label = { Text(text = "Email") },
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_email),
+                                contentDescription = "Email") },
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
                 }
                 Button(
-                    onClick = { navController.navigate(Screen.Masuk.route)},
+                    onClick = { navController.navigate(Screen.CekEmail.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
                         vertical = 16.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                ) {
+                    ) {
                     Text(
-                        text = "Selanjutnya",
+                        text = "Kirim Kode OTP",
                         color = Color.White,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
                         style = TextStyle(
                             fontSize = 14.sp,
-                            letterSpacing = 0.25.sp
-                        ),
+                            letterSpacing = 0.25.sp),
                         modifier = Modifier
-                            .wrapContentHeight(align = Alignment.CenterVertically)
-                    )
+                            .wrapContentHeight(align = Alignment.CenterVertically))
                 }
             }
         }
@@ -149,8 +148,10 @@ fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modif
             contentDescription = "Vector 3",
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .offset(x = (-6).dp,
-                    y = 617.dp)
+                .offset(
+                    x = (-6).dp,
+                    y = 617.dp
+                )
                 .requiredWidth(width = 444.dp)
                 .requiredHeight(height = 183.dp))
     }
@@ -158,7 +159,7 @@ fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modif
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
-private fun KonfirmasiKataSandiPreview() {
+private fun LupaKataSandiPreview() {
     val navController = rememberNavController()
-    KonfirmasiKataSandi(navController = navController, modifier = Modifier)
+    LupaKataSandi(navController = navController, modifier = Modifier, navigateBack = { navController.popBackStack() })
 }
