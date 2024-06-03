@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.ui.SplashScreen
+package com.trisulaforce.laundryapp.ui.screen.splashscreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

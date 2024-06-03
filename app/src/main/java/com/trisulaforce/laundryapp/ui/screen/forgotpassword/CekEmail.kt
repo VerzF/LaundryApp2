@@ -1,8 +1,5 @@
-package com.trisulaforce.laundryapp.ui.forgotpassword
+package com.trisulaforce.laundryapp.ui.screen.forgotpassword
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,36 +21,27 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
-
-class CekEmail : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
+import com.trisulaforce.laundryapp.ui.theme.AppTypography
+import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
+import com.trisulaforce.laundryapp.ui.theme.backgroundLight
+import com.trisulaforce.laundryapp.ui.theme.onBackgroundLight
+import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
+import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
 fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
@@ -62,7 +50,7 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
-            .background(Color.White)
+            .background(backgroundLight)
     ) {
         Column(
             modifier = Modifier
@@ -88,16 +76,16 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
                             contentDescription = "Icons",
-                            tint = Color(0xff465d91))
+                            tint = primaryLight
+                        )
                     }
                     Text(
                         text = "Cek Email Anda",
-                        color = Color(0xff465d91),
+                        color = primaryLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.27.em,
-                        style = TextStyle(
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight.Bold),
+                        style = AppTypography.titleLarge,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .wrapContentHeight(align = Alignment.CenterVertically))
                     IconButton(onClick = {  }) { }
@@ -109,12 +97,11 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Kita telah mengirimkan 5 digit kode pada email anda",
-                        color = Color.Black.copy(alpha = 0.8f),
+                        text = "Kita telah mengirimkan 5 digit kode pada email Anda",
+                        color = onBackgroundLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
-                        style = TextStyle(
-                            fontSize = 14.sp),
+                        style = AppTypography.bodyMedium,
                         modifier = Modifier
                             .fillMaxWidth()
                             .wrapContentHeight(align = Alignment.CenterVertically))
@@ -127,50 +114,50 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                                 .requiredHeight(height = 48.dp)
                                 .clip(shape = RoundedCornerShape(5.dp))
                                 .border(
-                                    BorderStroke(1.dp, Color.Black),
+                                    BorderStroke(1.dp, onBackgroundLight),
                                     shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
                                 )
-                                .background(color = Color(0xfffaf9ff)))
+                        )
                         Box(
                             modifier = Modifier
                                 .requiredWidth(width = 44.dp)
                                 .requiredHeight(height = 48.dp)
                                 .clip(shape = RoundedCornerShape(5.dp))
                                 .border(
-                                    BorderStroke(1.dp, Color.Black),
+                                    BorderStroke(1.dp, onBackgroundLight),
                                     shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
                                 )
-                                .background(color = Color(0xfffaf9ff)))
+                        )
                         Box(
                             modifier = Modifier
                                 .requiredWidth(width = 44.dp)
                                 .requiredHeight(height = 48.dp)
                                 .clip(shape = RoundedCornerShape(5.dp))
                                 .border(
-                                    BorderStroke(1.dp, Color.Black),
+                                    BorderStroke(1.dp, onBackgroundLight),
                                     shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
                                 )
-                                .background(color = Color(0xfffaf9ff)))
+                        )
                         Box(
                             modifier = Modifier
                                 .requiredWidth(width = 44.dp)
                                 .requiredHeight(height = 48.dp)
                                 .clip(shape = RoundedCornerShape(5.dp))
                                 .border(
-                                    BorderStroke(1.dp, Color.Black),
+                                    BorderStroke(1.dp, onBackgroundLight),
                                     shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
                                 )
-                                .background(color = Color(0xfffaf9ff)))
+                        )
                         Box(
                             modifier = Modifier
                                 .requiredWidth(width = 44.dp)
                                 .requiredHeight(height = 48.dp)
                                 .clip(shape = RoundedCornerShape(5.dp))
                                 .border(
-                                    BorderStroke(1.dp, Color.Black),
+                                    BorderStroke(1.dp, onBackgroundLight),
                                     shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
                                 )
-                                .background(color = Color(0xfffaf9ff)))
+                        )
                     }
                 }
                 Column(
@@ -181,7 +168,7 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                 ) {
                     Button(
                         onClick = { navController.navigate("ResetKataSandi") },
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
+                        colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                         contentPadding = PaddingValues(
                             horizontal = 16.dp,
                             vertical = 16.dp),
@@ -190,12 +177,10 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                     ) {
                         Text(
                             text = "Konfirmasi OTP",
-                            color = Color.White,
+                            color = onPrimaryLight,
                             textAlign = TextAlign.Center,
                             lineHeight = 1.43.em,
-                            style = TextStyle(
-                                fontSize = 14.sp,
-                                letterSpacing = 0.25.sp),
+                            style = AppTypography.labelLarge,
                             modifier = Modifier
                                 .wrapContentHeight(align = Alignment.CenterVertically))
                     }
@@ -205,12 +190,10 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                     ) {
                         Text(
                             text = "Belum mendapatkan kode?",
-                            color = Color.Black,
+                            color = onBackgroundLight,
                             textAlign = TextAlign.Center,
                             lineHeight = 1.43.em,
-                            style = TextStyle(
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium),
+                            style = AppTypography.bodyMedium,
                             modifier = Modifier
                                 .wrapContentHeight(align = Alignment.CenterVertically))
                         TextButton(
@@ -221,13 +204,10 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                         ) {
                             Text(
                                 text = "Kirim OTP",
-                                color = Color(0xff465d91),
+                                color = primaryLight,
                                 textAlign = TextAlign.Center,
                                 lineHeight = 1.43.em,
-                                style = TextStyle(
-                                    fontSize = 14.sp,
-                                    letterSpacing = 0.25.sp
-                                ),
+                                style = AppTypography.labelLarge,
                                 modifier = Modifier
                                     .wrapContentHeight(align = Alignment.CenterVertically)
                             )
@@ -254,5 +234,7 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
 @Composable
 private fun CekEmailPreview() {
     val navController = rememberNavController()
-    CekEmail(navController = navController, modifier = Modifier)
+    LaundryAppTheme {
+        CekEmail(navController = navController, modifier = Modifier)
+    }
 }
