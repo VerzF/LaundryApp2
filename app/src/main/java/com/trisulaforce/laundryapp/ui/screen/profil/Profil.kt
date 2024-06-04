@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.model.DataUser.users
 
 @Composable
 fun ProfilScreen() {
@@ -72,7 +73,7 @@ fun ProfileHeader() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box {
             Image(
-                painter = painterResource(id = R.drawable.vector2),
+                painter = painterResource(id = users.profileImage),
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(160.dp)
@@ -83,14 +84,13 @@ fun ProfileHeader() {
                 painter = painterResource(id = R.drawable.typeedit),
                 contentDescription = "Edit Icon",
                 modifier = Modifier
-                    .size(32.dp)
+                    .size(48.dp)
                     .align(Alignment.BottomEnd)
-                    .offset(x = (-8).dp, y = (-8).dp) // Offset for positioning inside the image
                     .padding(6.dp)
             )}
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "Iqbaal Ramadhan",
+            text = users.fullName,
             style = TextStyle(
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
@@ -100,7 +100,7 @@ fun ProfileHeader() {
             textAlign = TextAlign.Center
         )
         Text(
-            text = "iqbaalramadhan@gmail.com",
+            text = users.email,
             style = TextStyle(
                 fontSize = 14.sp,
                 color = Color(0xFF545252),
