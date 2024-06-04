@@ -86,6 +86,10 @@ fun RiwayatPesananItem(order: Pesanan) {
                 modifier = Modifier.padding(16.dp)
             ) {
                 Text(
+                    text = "Pesanan " + order.idPesanan,
+                    style = AppTypography.bodyMedium,
+                )
+                Text(
                     text = order.customerName,
                     fontWeight = FontWeight.Bold,
                     style = AppTypography.titleLarge
@@ -150,11 +154,11 @@ fun RiwayatPesananItem(order: Pesanan) {
                     ) {
                         Text(
                             text = "Pilih Parfum",
-                            style = AppTypography.labelMedium
+                            style = AppTypography.bodyMedium
                         )
                         Text(
                             text = order.perfume,
-                            style = AppTypography.labelMedium
+                            style = AppTypography.bodyMedium
                         )
                     }
                     Row (
@@ -163,11 +167,11 @@ fun RiwayatPesananItem(order: Pesanan) {
                     ) {
                         Text(
                             text = "Metode Pembayaran",
-                            style = AppTypography.labelMedium
+                            style = AppTypography.bodyMedium
                         )
                         Text(
                             text = order.paymentMethod,
-                            style = AppTypography.labelMedium
+                            style = AppTypography.bodyMedium
                         )
                     }
                     Row (
@@ -176,11 +180,11 @@ fun RiwayatPesananItem(order: Pesanan) {
                     ) {
                         Text(
                             text = "Notes",
-                            style = AppTypography.labelMedium
+                            style = AppTypography.bodyMedium
                         )
                         Text(
                             text = order.notes,
-                            style = AppTypography.labelMedium
+                            style = AppTypography.bodyMedium
                         )
                     }
                 }

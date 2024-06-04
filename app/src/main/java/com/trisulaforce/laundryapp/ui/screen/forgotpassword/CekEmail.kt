@@ -108,56 +108,18 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterHorizontally)
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .requiredWidth(width = 44.dp)
-                                .requiredHeight(height = 48.dp)
-                                .clip(shape = RoundedCornerShape(5.dp))
-                                .border(
-                                    BorderStroke(1.dp, onBackgroundLight),
-                                    shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
-                                )
-                        )
-                        Box(
-                            modifier = Modifier
-                                .requiredWidth(width = 44.dp)
-                                .requiredHeight(height = 48.dp)
-                                .clip(shape = RoundedCornerShape(5.dp))
-                                .border(
-                                    BorderStroke(1.dp, onBackgroundLight),
-                                    shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
-                                )
-                        )
-                        Box(
-                            modifier = Modifier
-                                .requiredWidth(width = 44.dp)
-                                .requiredHeight(height = 48.dp)
-                                .clip(shape = RoundedCornerShape(5.dp))
-                                .border(
-                                    BorderStroke(1.dp, onBackgroundLight),
-                                    shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
-                                )
-                        )
-                        Box(
-                            modifier = Modifier
-                                .requiredWidth(width = 44.dp)
-                                .requiredHeight(height = 48.dp)
-                                .clip(shape = RoundedCornerShape(5.dp))
-                                .border(
-                                    BorderStroke(1.dp, onBackgroundLight),
-                                    shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
-                                )
-                        )
-                        Box(
-                            modifier = Modifier
-                                .requiredWidth(width = 44.dp)
-                                .requiredHeight(height = 48.dp)
-                                .clip(shape = RoundedCornerShape(5.dp))
-                                .border(
-                                    BorderStroke(1.dp, onBackgroundLight),
-                                    shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
-                                )
-                        )
+                        repeat(5) {
+                            Box(
+                                modifier = Modifier
+                                    .requiredWidth(width = 44.dp)
+                                    .requiredHeight(height = 48.dp)
+                                    .clip(shape = RoundedCornerShape(5.dp))
+                                    .border(
+                                        BorderStroke(1.dp, onBackgroundLight),
+                                        shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
+                                    )
+                            )
+                        }
                     }
                 }
                 Column(

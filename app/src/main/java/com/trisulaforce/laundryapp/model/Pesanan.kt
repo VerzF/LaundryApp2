@@ -3,7 +3,7 @@ package com.trisulaforce.laundryapp.model
 import java.io.Serializable
 
 data class Pesanan(
-    val idPesanan: Long,
+    val idPesanan: String,
     val date: String,
     val customerName: String,
     val services: List<Layanan>,

@@ -37,9 +37,11 @@ import com.trisulaforce.laundryapp.ui.theme.backgroundLight
 import com.trisulaforce.laundryapp.ui.theme.onBackgroundLight
 
 @Composable
-fun RiwayatPesanan(navController: NavController, modifier: Modifier = Modifier, orders: List<Pesanan>) {
+fun RiwayatPesanan(
+    navController: NavController,
+    orders: List<Pesanan>) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .clip(shape = RoundedCornerShape(24.dp))
             .background(backgroundLight)
@@ -55,7 +57,7 @@ fun RiwayatPesanan(navController: NavController, modifier: Modifier = Modifier, 
                     .fillMaxWidth()
             ) {
                 IconButton(
-                    onClick = {  }
+                    onClick = { navController.popBackStack() }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -90,6 +92,6 @@ fun RiwayatPesanan(navController: NavController, modifier: Modifier = Modifier, 
 private fun RiwayatPesananPreview() {
     val navController = rememberNavController()
     LaundryAppTheme {
-        RiwayatPesanan(navController = navController, modifier = Modifier, orders = orders)
+        RiwayatPesanan(navController = navController, orders = orders)
     }
 }
