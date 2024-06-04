@@ -58,9 +58,9 @@ import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 
 @Composable
-fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modifier) {
+fun KonfirmasiKataSandi(navController: NavController) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
@@ -160,5 +160,5 @@ fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modif
 @Composable
 private fun KonfirmasiKataSandiPreview() {
     val navController = rememberNavController()
-    KonfirmasiKataSandi(navController = navController, modifier = Modifier)
+    KonfirmasiKataSandi(navController = navController)
 }

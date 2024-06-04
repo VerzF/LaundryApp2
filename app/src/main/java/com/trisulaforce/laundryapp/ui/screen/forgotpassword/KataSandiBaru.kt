@@ -54,9 +54,9 @@ import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 
 @Composable
-fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
+fun KataSandiBaru(navController: NavController, navigateBack: () -> Unit) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .clip(shape = RoundedCornerShape(24.dp))
             .background(Color.White)
@@ -215,5 +215,5 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier, n
 @Composable
 private fun KataSandiBaruPreview() {
     val navController = rememberNavController()
-    KataSandiBaru(navController = navController, modifier = Modifier, navigateBack = { navController.popBackStack() })
+    KataSandiBaru(navController = navController, navigateBack = { navController.popBackStack() })
 }

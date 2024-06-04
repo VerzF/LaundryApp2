@@ -47,9 +47,9 @@ import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
+fun ResetKataSandi(navController: NavController, navigateBack: () -> Unit) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
@@ -152,5 +152,5 @@ fun ResetKataSandi(navController: NavController, modifier: Modifier = Modifier, 
 @Composable
 private fun ResetKataSandiPreview() {
     val navController = rememberNavController()
-    ResetKataSandi(navController, Modifier, navigateBack = { navController.popBackStack() })
+    ResetKataSandi(navController, navigateBack = { navController.popBackStack() })
 }

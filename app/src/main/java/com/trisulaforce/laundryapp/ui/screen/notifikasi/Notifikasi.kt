@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.ui.Notifikasi
+package com.trisulaforce.laundryapp.ui.screen.notifikasi
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -28,111 +30,72 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NotificationTopAppBar() {
-    Column (modifier = Modifier
-        .requiredWidth(width = 360.dp)
-        .requiredHeight(height = 800.dp)
-        .clip(shape = RoundedCornerShape(24.dp))
-        .background(color = Color.White)
-    )
-    {
-    }
-    TopAppBar(
-        title = {
-            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                Text(text = "Notifikasi", color = Color.Black)
-            }
-        },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White)
-    )
-}
-
-@Composable
-fun BottomNavigationBar() {
-    BottomAppBar(
-        containerColor = Color.White,
-        contentColor = Color.Black,
+fun Notification(navigateBack: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .requiredWidth(width = 360.dp)
+            .requiredHeight(height = 800.dp)
+            .clip(shape = RoundedCornerShape(24.dp))
+            .background(Color.White)
     ) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(80.dp)
-                .background(Color(0xFFFAF9FF))
+                .requiredWidth(width = 360.dp)
+                .requiredHeight(height = 800.dp)
         ) {
-            BottomNavItem(
-                icon = R.drawable.home,
-                label = "Home",
-                isSelected = false,
-                onClick = { /* TODO: Handle Home Click */ }
-            )
-            BottomNavItem(
-                icon = R.drawable.notifikasi,
-                label = "Notifications",
-                isSelected = false,
-                onClick = { /* TODO: Handle Notifications Click */ }
-            )
-            BottomNavItem(
-                icon = R.drawable.profile,
-                label = "Profil",
-                isSelected = true,
-                onClick = { /* TODO: Handle Profile Click */ }
-            )
+            Column(
+                verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.Top),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(all = 24.dp)
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .requiredWidth(width = 312.dp)
+                ) {
+                    IconButton(
+                        onClick = navigateBack
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_leftarrow),
+                            contentDescription = "Icons",
+                            tint = Color(0xff465d91)
+                        )
+                    }
+                    Text(
+                        text = "Notifikasi",
+                        color = Color(0xff465d91),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 1.27.em,
+                        style = TextStyle(
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold
+                        ),
+                        modifier = Modifier
+                            .wrapContentHeight(align = Alignment.CenterVertically)
+                    )
+                    IconButton(onClick = { }) { }
+                }
+            }
         }
     }
 }
-
-@Composable
-fun BottomNavItem(
-    icon: Int,
-    label: String,
-    isSelected: Boolean,
-    onClick: () -> Unit
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .clickable(onClick = onClick)
-            .padding(vertical = 8.dp)
-            .padding(horizontal = 30.dp)
-    ) {
-        val color = if (isSelected) Color.Black else Color(0xFF44474F)
-        Icon(
-            painter = painterResource(id = icon),
-            contentDescription = "$label Icon",
-            tint = color,
-            modifier = Modifier.size(24.dp)
-        )
-        Text(
-            text = label,
-            style = TextStyle(
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Medium,
-                color = color,
-                lineHeight = 1.33.em
-            )
-        )
-    }
-}
-
 @Preview
 @Composable
-fun NotificationTopAppBarPreview() {
-    NotificationTopAppBar()
-}
-
-@Preview
-@Composable
-fun BottomNavigationBarPreview() {
-    BottomNavigationBar()
+fun NotificationPreview() {
+    val navController = rememberNavController()
+    Notification(navigateBack =  { navController.popBackStack() })
 }

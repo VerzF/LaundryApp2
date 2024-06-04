@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
 fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFinish: () -> Unit) {
@@ -134,7 +135,7 @@ fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFi
                 )
                 Tab(
                     selected = false,
-                    onClick = { onFinish() },
+                    onClick = { navController.navigate(Screen.Masuk.route) },
                     text = {
                         Text(
                             text = "Saya sudah punya akun",

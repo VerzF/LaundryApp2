@@ -1,7 +1,8 @@
-package com.trisulaforce.laundryapp.ui.login
+package com.trisulaforce.laundryapp.ui.screen.masuk
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
 fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
@@ -157,11 +159,12 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateB
                         text = "Lupa Kata Sandi?",
                         color = Color(0xff465d91),
                         modifier = Modifier.padding(start = 8.dp)
+                            .clickable{navController.navigate(Screen.LupaKataSandi.route)}
                     )
                 }
                 Spacer(modifier = Modifier.height(4.dp))
                 Button(
-                    onClick = { navController.navigate("login") },
+                    onClick = { navController.navigate(Screen.Home.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
                     modifier = Modifier
@@ -191,9 +194,9 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateB
                     )
                     Text(
                         text = "Daftar",
-                        color = Color(0xff465d91),
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(start = 4.dp)
+                        style = TextStyle(color = Color(0xff465d91), fontWeight = FontWeight.Bold),
+                        modifier = Modifier
+                            .clickable{navController.navigate(Screen.DaftarScreen.route)}
                     )
                 }
             }

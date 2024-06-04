@@ -1,5 +1,6 @@
 package com.trisulaforce.laundryapp
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -21,12 +22,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.trisulaforce.laundryapp.Profil.ProfilScreen
-import com.trisulaforce.laundryapp.ui.forgotpassword.CekEmail
-import com.trisulaforce.laundryapp.ui.forgotpassword.LupaKataSandi
+import com.trisulaforce.laundryapp.ui.screen.profil.ProfilScreen
+import com.trisulaforce.laundryapp.ui.screen.forgotpassword.CekEmail
+import com.trisulaforce.laundryapp.ui.screen.forgotpassword.LupaKataSandi
 import com.trisulaforce.laundryapp.ui.navigation.NavigationItem
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.screen.beranda.Beranda
+import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KataSandiBaru
+import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KonfirmasiKataSandi
+import com.trisulaforce.laundryapp.ui.screen.forgotpassword.ResetKataSandi
+import com.trisulaforce.laundryapp.ui.screen.masuk.Masuk
+import com.trisulaforce.laundryapp.ui.screen.notifikasi.Notification
+import com.trisulaforce.laundryapp.ui.screen.splashscreen.Onboarding
 import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 
 @Composable
@@ -40,14 +47,14 @@ fun LaundryApp(
     Scaffold(
         bottomBar = {
             if (currentRoute != Screen.Profile.route) {
-                BottomBar(navController)
+                BottomBar(navController, contentPadding = PaddingValues())
             }
         },
         modifier = modifier
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Home.route,
+            startDestination = Screen.Onboarding.route,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
@@ -55,28 +62,40 @@ fun LaundryApp(
             }
 
             composable(Screen.Profile.route){
-                ProfilScreen(navController)
+                ProfilScreen(navController = navController, PaddingValues())
             }
 
-            /*composable(Screen.LupaKataSandi.route){
-                LupaKataSandi(navController, { navController.popBackStack() })
-            }*/
+            composable(Screen.Notification.route){
+                Notification( navigateBack = { navController.popBackStack() })
+            }
+
+            composable(Screen.LupaKataSandi.route){
+                LupaKataSandi(navController = navController, navigateBack = { navController.popBackStack() })
+            }
 
             composable(Screen.CekEmail.route){
-                CekEmail(navController, { navController.popBackStack() })
+                CekEmail(navController = navController, navigateBack = { navController.popBackStack() })
             }
 
-            /*composable(Screen.ResetKataSandi.route){
-                ResetKataSandi()
+            composable(Screen.ResetKataSandi.route){
+                ResetKataSandi(navController, navigateBack = { navController.popBackStack() })
             }
 
             composable(Screen.KonfirmasiKataSandi.route){
-                KonfirmasiKataSandi()
+                KonfirmasiKataSandi(navController = navController)
             }
 
             composable(Screen.KataSandiBaru.route){
-                KataSandiBaru()
-            }*/
+                KataSandiBaru(navController = navController, navigateBack = { navController.popBackStack() })
+            }
+
+            composable(Screen.Masuk.route){
+                Masuk(navController, Modifier, navigateBack = { navController.popBackStack() })
+            }
+
+            composable(Screen.Onboarding.route){
+                Onboarding(navController = navController, modifier = Modifier) {}
+            }
         }
     }
 }
@@ -84,13 +103,15 @@ fun LaundryApp(
 @Composable
 private fun BottomBar(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues
 ) {
     NavigationBar(
-        modifier = modifier,
+        modifier = modifier.padding(contentPadding),
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
+
         val navigationItems = listOf(
             NavigationItem(
                 title = stringResource(R.string.menu_home),

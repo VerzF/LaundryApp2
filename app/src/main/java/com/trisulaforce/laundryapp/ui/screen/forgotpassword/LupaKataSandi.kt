@@ -45,9 +45,9 @@ import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 
 @Composable
-fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
+fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
@@ -161,5 +161,5 @@ fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier, n
 @Composable
 private fun LupaKataSandiPreview() {
     val navController = rememberNavController()
-    LupaKataSandi(navController = navController, modifier = Modifier, navigateBack = { navController.popBackStack() })
+    LupaKataSandi(navController = navController, navigateBack = { navController.popBackStack() })
 }
