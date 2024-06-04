@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun editprofil(modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
     Column(
