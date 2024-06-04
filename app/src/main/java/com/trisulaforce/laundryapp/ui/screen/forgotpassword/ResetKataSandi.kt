@@ -2,7 +2,6 @@ package com.trisulaforce.laundryapp.ui.screen.forgotpassword
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,40 +19,35 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
+import com.trisulaforce.laundryapp.ui.theme.AppTypography
+import com.trisulaforce.laundryapp.ui.theme.backgroundLight
+import com.trisulaforce.laundryapp.ui.theme.onBackgroundLight
+import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
+import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun ResetKataSandi(navController: NavController, navigateBack: () -> Unit) {
+fun ResetKataSandi(navController: NavController, onBackButtonClick: () -> Unit) {
     Box(
         modifier = Modifier
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
-            .background(Color.White)
+            .background(backgroundLight)
     ) {
         Column(
             modifier = Modifier
@@ -74,21 +68,20 @@ fun ResetKataSandi(navController: NavController, navigateBack: () -> Unit) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = navigateBack
+                        onClick = onBackButtonClick
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
                             contentDescription = "Icons",
-                            tint = Color(0xff465d91))
+                            tint = primaryLight)
                     }
                     Text(
                         text = "Lupa Kata Sandi",
-                        color = Color(0xff465d91),
+                        color = primaryLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.27.em,
-                        style = TextStyle(
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight.Bold),
+                        style = AppTypography.titleLarge,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .wrapContentHeight(align = Alignment.CenterVertically))
                     IconButton(onClick = {  }) { }
@@ -101,18 +94,17 @@ fun ResetKataSandi(navController: NavController, navigateBack: () -> Unit) {
                 ) {
                     Text(
                         text = "Kata sandi anda telah berhasil diatur ulang. Klik konfirmasi untuk atur kata sandi baru.",
-                        color = Color.Black.copy(alpha = 0.8f),
+                        color = onBackgroundLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
-                        style = TextStyle(
-                            fontSize = 14.sp),
+                        style = AppTypography.bodyMedium,
                         modifier = Modifier
                             .fillMaxWidth()
                             .wrapContentHeight(align = Alignment.CenterVertically))
                 }
                 Button(
-                    onClick = { navController.navigate(Screen.KataSandiBaru.route) },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
+                    onClick = { navController.navigate(Screen.KonfirmasiKataSandi.route) },
+                    colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
                         vertical = 16.dp),
@@ -121,13 +113,10 @@ fun ResetKataSandi(navController: NavController, navigateBack: () -> Unit) {
                 ) {
                     Text(
                         text = "Konfirmasi",
-                        color = Color.White,
+                        color = onPrimaryLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
-                        style = TextStyle(
-                            fontSize = 14.sp,
-                            letterSpacing = 0.25.sp
-                        ),
+                        style = AppTypography.labelLarge,
                         modifier = Modifier
                             .wrapContentHeight(align = Alignment.CenterVertically)
                     )
@@ -152,5 +141,5 @@ fun ResetKataSandi(navController: NavController, navigateBack: () -> Unit) {
 @Composable
 private fun ResetKataSandiPreview() {
     val navController = rememberNavController()
-    ResetKataSandi(navController, navigateBack = { navController.popBackStack() })
+    ResetKataSandi(navController, onBackButtonClick = {navController.popBackStack()})
 }

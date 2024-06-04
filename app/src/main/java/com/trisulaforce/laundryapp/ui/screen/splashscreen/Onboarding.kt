@@ -68,13 +68,13 @@ fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFi
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.Bold
                             )
-                        ) { append("PEKANBARU\n") }
+                        ) { append("HOMIE\n") }
                         withStyle(
                             style = SpanStyle(
                                 color = Color(0xff465d91),
                                 fontSize = 16.sp
                             )
-                        ) { append("Laundry") }
+                        ) { append("") }
                     },
                     modifier = Modifier.requiredWidth(135.dp)
                 )

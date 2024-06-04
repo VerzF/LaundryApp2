@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.menunggu
+package com.trisulaforce.laundryapp.ui.screen.menunggu
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

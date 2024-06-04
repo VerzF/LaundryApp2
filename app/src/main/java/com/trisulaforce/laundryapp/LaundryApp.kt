@@ -28,6 +28,7 @@ import com.trisulaforce.laundryapp.ui.screen.forgotpassword.LupaKataSandi
 import com.trisulaforce.laundryapp.ui.navigation.NavigationItem
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.screen.beranda.Beranda
+import com.trisulaforce.laundryapp.ui.screen.daftar.DaftarScreen
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KataSandiBaru
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KonfirmasiKataSandi
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.ResetKataSandi
@@ -66,19 +67,19 @@ fun LaundryApp(
             }
 
             composable(Screen.Notification.route){
-                Notification( navigateBack = { navController.popBackStack() })
+                Notification(onBackButtonClick =  { navController.popBackStack() })
             }
 
             composable(Screen.LupaKataSandi.route){
-                LupaKataSandi(navController = navController, navigateBack = { navController.popBackStack() })
+                LupaKataSandi(navController = navController, onBackButtonClick = { navController.popBackStack() })
             }
 
             composable(Screen.CekEmail.route){
-                CekEmail(navController = navController, navigateBack = { navController.popBackStack() })
+                CekEmail(navController = navController, onBackButtonClick = { navController.popBackStack() })
             }
 
             composable(Screen.ResetKataSandi.route){
-                ResetKataSandi(navController, navigateBack = { navController.popBackStack() })
+                ResetKataSandi(navController = navController, onBackButtonClick = {navController.popBackStack()})
             }
 
             composable(Screen.KonfirmasiKataSandi.route){
@@ -86,15 +87,19 @@ fun LaundryApp(
             }
 
             composable(Screen.KataSandiBaru.route){
-                KataSandiBaru(navController = navController, navigateBack = { navController.popBackStack() })
+                KataSandiBaru(navController = navController, onBackButtonClick = {navController.popBackStack()})
             }
 
             composable(Screen.Masuk.route){
-                Masuk(navController, Modifier, navigateBack = { navController.popBackStack() })
+                Masuk(navController, Modifier, onBackButtonClick = { navController.popBackStack() })
             }
 
             composable(Screen.Onboarding.route){
                 Onboarding(navController = navController, modifier = Modifier) {}
+            }
+
+            composable(Screen.DaftarScreen.route){
+                DaftarScreen(navController, onBackButtonClick = { navController.popBackStack() })
             }
         }
     }

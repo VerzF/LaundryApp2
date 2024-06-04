@@ -28,7 +28,7 @@ import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
+fun Masuk(navController: NavController, modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
     Box(
         modifier = modifier
             .requiredWidth(360.dp)
@@ -58,7 +58,7 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateB
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 30.dp)
                 ) {
-                    IconButton(onClick = navigateBack) {
+                    IconButton(onClick = onBackButtonClick) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back Icon",
@@ -208,5 +208,5 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, navigateB
 @Composable
 fun MasukPreview() {
     val navController = rememberNavController()
-    Masuk(navController, Modifier, navigateBack = { navController.popBackStack() })
+    Masuk(navController, Modifier, onBackButtonClick = { navController.popBackStack() })
 }

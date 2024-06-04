@@ -1,16 +1,16 @@
 package com.trisulaforce.laundryapp.ui.navigation
 
 sealed class Screen(val route: String) {
-    object Home : Screen("Beranda")
-    object Notification : Screen("Notification")
-    object Profile : Screen("profile")
-    object CekEmail : Screen("CekEmail")
-    object KataSandiBaru : Screen("KataSandiBaru")
-    object KonfirmasiKataSandi : Screen("KonfirmasiKataSandi")
-    object LupaKataSandi : Screen("LupaKataSandi")
-    object ResetKataSandi : Screen("ResetKataSandi")
-    object Masuk : Screen("Masuk")
-    object DaftarScreen : Screen("DaftarScreen")
-    object ScreenBeranda : Screen("ScreenBeranda")
-    object Onboarding : Screen("Onboarding")
+    data object Home : Screen("Beranda")
+    data object Notification : Screen("Notification")
+    data object Profile : Screen("profile")
+    data object CekEmail : Screen("CekEmail")
+    data object KataSandiBaru : Screen("KataSandiBaru")
+    data object KonfirmasiKataSandi : Screen("KonfirmasiKataSandi")
+    data object LupaKataSandi : Screen("LupaKataSandi")
+    data object ResetKataSandi : Screen("ResetKataSandi")
+    data object Masuk : Screen("Masuk")
+    data object DaftarScreen : Screen("DaftarScreen")
+    data object ScreenBeranda : Screen("ScreenBeranda")
+    data object Onboarding : Screen("Onboarding")
 }

@@ -29,29 +29,30 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
-
+import com.trisulaforce.laundryapp.ui.theme.AppTypography
+import com.trisulaforce.laundryapp.ui.theme.backgroundLight
+import com.trisulaforce.laundryapp.ui.theme.onBackgroundLight
+import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
+import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
+fun LupaKataSandi(navController: NavController, onBackButtonClick: () -> Unit) {
     Box(
         modifier = Modifier
             .requiredWidth(width = 360.dp)
             .requiredHeight(height = 800.dp)
             .clip(shape = RoundedCornerShape(24.dp))
-            .background(color = Color.White)
+            .background(color = backgroundLight)
     ) {
         Column(
             modifier = Modifier
@@ -72,21 +73,20 @@ fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = navigateBack
+                        onClick = { onBackButtonClick }
                         ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
                             contentDescription = "Icons",
-                            tint = Color(0xff465d91))
+                            tint = primaryLight)
                     }
                     Text(
                         text = "Lupa Kata Sandi",
-                        color = Color(0xff465d91),
+                        color = primaryLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.27.em,
-                        style = TextStyle(
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight.Bold),
+                        style = AppTypography.titleLarge,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .wrapContentHeight(align = Alignment.CenterVertically))
                     IconButton(onClick = {  }) { }
@@ -99,11 +99,10 @@ fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
                 ) {
                     Text(
                         text = "Masukkan e-mail anda untuk mengatur ulang password anda",
-                        color = Color.Black.copy(alpha = 0.8f),
+                        color = onBackgroundLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
-                        style = TextStyle(
-                            fontSize = 14.sp),
+                        style = AppTypography.bodyMedium,
                         modifier = Modifier
                             .fillMaxWidth()
                             .wrapContentHeight(align = Alignment.CenterVertically))
@@ -111,11 +110,18 @@ fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
                     OutlinedTextField(
                         value = text,
                         onValueChange = { text = it },
-                        label = { Text(text = "Email") },
+                        label = {
+                            Text(
+                                text = "Email",
+                                style = AppTypography.labelLarge,
+                                color = onBackgroundLight
+                            ) },
                         leadingIcon = {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_email),
-                                contentDescription = "Email") },
+                                contentDescription = "Email",
+                                tint = onBackgroundLight
+                            ) },
                         shape = RoundedCornerShape(12.dp),
                         modifier = Modifier
                             .fillMaxWidth()
@@ -123,7 +129,7 @@ fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
                 }
                 Button(
                     onClick = { navController.navigate(Screen.CekEmail.route) },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
+                    colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
                         vertical = 16.dp),
@@ -132,12 +138,10 @@ fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
                     ) {
                     Text(
                         text = "Kirim Kode OTP",
-                        color = Color.White,
+                        color = onPrimaryLight,
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
-                        style = TextStyle(
-                            fontSize = 14.sp,
-                            letterSpacing = 0.25.sp),
+                        style = AppTypography.labelLarge,
                         modifier = Modifier
                             .wrapContentHeight(align = Alignment.CenterVertically))
                 }
@@ -161,5 +165,5 @@ fun LupaKataSandi(navController: NavController, navigateBack: () -> Unit) {
 @Composable
 private fun LupaKataSandiPreview() {
     val navController = rememberNavController()
-    LupaKataSandi(navController = navController, navigateBack = { navController.popBackStack() })
+    LupaKataSandi(navController = navController, onBackButtonClick = { navController.popBackStack() })
 }

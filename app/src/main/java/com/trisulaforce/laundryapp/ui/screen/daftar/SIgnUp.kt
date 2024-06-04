@@ -44,9 +44,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, navigateBack: () -> Unit) {
+fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
     Box(
         modifier = modifier
             .requiredWidth(360.dp)
@@ -76,7 +77,7 @@ fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, na
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 30.dp)
                 ) {
-                    IconButton(onClick = navigateBack) {
+                    IconButton(onClick = onBackButtonClick) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back Icon",
@@ -194,7 +195,7 @@ fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, na
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Button(
-                    onClick = { navController.navigate("login") },
+                    onClick = { navController.navigate(Screen.Masuk.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
                     modifier = Modifier
@@ -237,5 +238,5 @@ fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, na
 @Composable
 private fun DaftarPreview() {
     val navController = rememberNavController()
-    DaftarScreen(navController, navigateBack = { navController.popBackStack() })
+    DaftarScreen(navController, onBackButtonClick = { navController.popBackStack() })
 }
