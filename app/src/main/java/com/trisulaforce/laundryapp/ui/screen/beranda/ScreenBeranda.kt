@@ -319,7 +319,7 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(9.dp, Alignment.CenterVertically),
                         modifier = Modifier
-                            .padding()
+                            .clickable{navController.navigate(Screen.Kenali.route)}
                     ) {
                         Text(
                             text = "Deskripsi Aplikasi",
@@ -356,7 +356,9 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                         .padding(all = 12.dp)
                 ) {
                     Column(
-                        verticalArrangement = Arrangement.spacedBy(9.dp, Alignment.CenterVertically)
+                        verticalArrangement = Arrangement.spacedBy(9.dp, Alignment.CenterVertically),
+                        modifier = Modifier
+                            .clickable{navController.navigate(Screen.Penggunaan.route)}
                     ) {
                         Text(
                             text = "Cara Penggunaan",

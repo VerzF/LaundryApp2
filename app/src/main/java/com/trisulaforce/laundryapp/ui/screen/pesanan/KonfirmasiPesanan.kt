@@ -57,6 +57,7 @@ import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.model.DataUser.users
 import com.trisulaforce.laundryapp.model.Layanan
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.theme.AppTypography
 import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 import com.trisulaforce.laundryapp.ui.theme.backgroundLight
@@ -89,7 +90,7 @@ fun KonfirmasiPesanan(
                         .fillMaxWidth()
                 ) {
                     IconButton(
-                        onClick = { navController.popBackStack() }
+                        onClick = { navController.navigateUp() }
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
@@ -324,7 +325,7 @@ fun KonfirmasiPesanan(
             ) {
                 Divider(thickness = 2.dp)
                 Button(
-                    onClick = { },
+                    onClick = { navController.navigate(Screen.Menunggu.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,

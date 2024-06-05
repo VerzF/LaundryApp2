@@ -26,13 +26,13 @@ import com.trisulaforce.laundryapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun KenaliAplikasiKamiScreen(navController: NavController) {
+fun PenggunaanAplikasiKamiScreen(navController: NavController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "Deskripsi Aplikasi",
+                        text = "Penggunaan Aplikasi",
                         color = Color.Black,
                         fontWeight = FontWeight.SemiBold,
                         textAlign = TextAlign.Center,
@@ -55,13 +55,13 @@ fun KenaliAplikasiKamiScreen(navController: NavController) {
             )
         },
         content = { padding ->
-            KenaliAplikasiKami(Modifier.padding(padding))
+            PenggunaanAplikasi(Modifier.padding(padding))
         }
     )
 }
 
 @Composable
-fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
+fun PenggunaanAplikasi(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .requiredWidth(360.dp)
@@ -192,10 +192,10 @@ fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
                             .background(Color(0xff465d91))
                     )
                     Text(
-                        text = " - Penjemputan & Pengantaran Gratis: Kami menyediakan layanan penjemputan dan pengantaran pakaian Anda secara gratis di lokasi yang Anda tentukan.\n - Proses Mudah & Cepat: Dengan beberapa langkah sederhana, Anda bisa memesan layanan laundry langsung dari aplikasi.\n - Pembayaran Aman: Pilih metode pembayaran yang paling nyaman bagi Anda.\n - Layanan Khusus: Kami juga menawarkan layanan tambahan seperti pewangi khusus dan setrika lipat untuk pakaian Anda.",
+                        text = " - Daftar : Jika belum memiliki akun, klik tombol “Daftar” dan isi formulir pendaftaran dengan informasi yang diperlukan seperti nama, email, nomor, telepon, dan kata sandi.\n - Masuk : Jika sudah memiliki akun, klik tombol “Masuk” dan masukkan email dan kata sandi yang telah terdaftar.",
                         color = Color.White,
                         style = TextStyle(
-                            fontSize = 8.sp,
+                            fontSize = 9.sp,
                             fontWeight = FontWeight.Medium
                         ),
                         modifier = Modifier
@@ -205,7 +205,7 @@ fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
                             .requiredHeight(80.dp)
                     )
                     Text(
-                        text = "Fitur Unggulan Kami",
+                        text = "Daftar atau Masuk ke Aplikasi",
                         color = Color.White,
                         style = TextStyle(
                             fontSize = 12.sp,
@@ -234,10 +234,10 @@ fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
                             .background(Color(0xff465d91))
                     )
                     Text(
-                        text = "Kualitas Terbaik: Kami menggunakan bahan dan teknologi terbaik untuk memastikan pakaian Anda bersih dan rapi.\nTim Profesional: Tim kami terdiri dari tenaga ahli yang berpengalaman dalam menangani berbagai jenis pakaian.\nKenyamanan Maksimal: Kami hadir untuk memudahkan hidup Anda dengan layanan yang bisa diakses dengan mudah.\nHarga Terjangkau: Nikmati layanan yang kami berikan dengan harga yang terjangkau.",
+                        text = "- Setelah berhasil masuk, Anda akan diarahkan ke halaman beranda yang menampilkan berbagai layanan laundry yang tersedia. \n -Pilih jenis yang diinginkan, misalnya ‘Kiloan Reguler”, “Cuci Kering”, “Setrika”, atau lainnya.",
                         color = Color.White,
                         style = TextStyle(
-                            fontSize = 8.sp,
+                            fontSize = 9.sp,
                             fontWeight = FontWeight.Medium
                         ),
                         modifier = Modifier
@@ -247,7 +247,7 @@ fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
                             .requiredHeight(112.dp)
                     )
                     Text(
-                        text = "Kenapa Memilih Kami?",
+                        text = "Pilih Layanan Laundry?",
                         color = Color.White,
                         style = TextStyle(
                             fontSize = 12.sp,
@@ -263,21 +263,19 @@ fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
             }
         }
         Text(
-            text = "Apa itu Homie Laundry?",
+            text = "Cara Menggunakan Aplikasi?",
             color = Color(0xff001a43),
             lineHeight = 1.em,
             style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight.SemiBold,
                 letterSpacing = (-0.5).sp
-
-
             ),
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .offset(x = 196.dp, y = 143.dp)
                 .requiredWidth(164.dp)
-                .requiredHeight(41.dp)
+                .requiredHeight(70.dp)
         )
         Image(
             painter = painterResource(id = R.drawable.gambar11),
@@ -288,7 +286,7 @@ fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
                 .requiredWidth(192.dp)
                 .requiredHeight(177.dp)
         )
-        TypeLightMode(
+        TypeLightModePenggunaan(
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .offset(y = (-1).dp)
@@ -297,7 +295,7 @@ fun KenaliAplikasiKami(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TypeLightMode(modifier: Modifier = Modifier) {
+fun TypeLightModePenggunaan(modifier: Modifier = Modifier) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -355,7 +353,7 @@ fun TypeLightMode(modifier: Modifier = Modifier) {
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
-private fun KenaliAplikasiKamiPreview() {
+private fun PenggunaanAplikasiKamiPreview() {
     val navController = rememberNavController()
-    KenaliAplikasiKamiScreen(navController)
+    PenggunaanAplikasiKamiScreen(navController)
 }
