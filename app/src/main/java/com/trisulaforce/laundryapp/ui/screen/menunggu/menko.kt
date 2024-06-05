@@ -1,4 +1,4 @@
-package com.trisulaforce.laundryapp.menunggu
+package com.trisulaforce.laundryapp.ui.screen.menunggu
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -99,7 +99,7 @@ fun Menunggu(navController: NavController, modifier: Modifier = Modifier) {
                 .offset(y = (-1).dp)
         )
         Button(
-            onClick = { navController.navigate(Screen.ScreenBeranda.route) },
+            onClick = { navController.navigate(Screen.Home.route) },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
             shape = RoundedCornerShape(100.dp),
             modifier = Modifier

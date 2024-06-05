@@ -23,6 +23,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.trisulaforce.laundryapp.ui.screen.menunggu.Menunggu
 import com.trisulaforce.laundryapp.model.DataPesanan.orders
 import com.trisulaforce.laundryapp.ui.screen.profil.Editprofil
 import com.trisulaforce.laundryapp.model.Layanan
@@ -36,8 +37,11 @@ import com.trisulaforce.laundryapp.ui.screen.daftar.DaftarScreen
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KataSandiBaru
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KonfirmasiKataSandi
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.ResetKataSandi
+import com.trisulaforce.laundryapp.ui.screen.kenali.KenaliAplikasiKamiScreen
+import com.trisulaforce.laundryapp.ui.screen.kenali.PenggunaanAplikasiKamiScreen
 import com.trisulaforce.laundryapp.ui.screen.layanan.ScreenLayanan
 import com.trisulaforce.laundryapp.ui.screen.masuk.Masuk
+import com.trisulaforce.laundryapp.ui.screen.menunggu.Konfirmasi
 import com.trisulaforce.laundryapp.ui.screen.notifikasi.Notification
 import com.trisulaforce.laundryapp.ui.screen.pesanan.DetailPesanan
 import com.trisulaforce.laundryapp.ui.screen.pesanan.RiwayatPesanan
@@ -130,6 +134,22 @@ fun LaundryApp(
 
             composable(Screen.ScreenLayanan.route){
                 ScreenLayanan(navController)
+            }
+            
+            composable(Screen.Menunggu.route){
+                Menunggu(navController)
+            }
+
+            composable(Screen.Konfirmasi.route){
+                Konfirmasi(navController)
+            }
+
+            composable(Screen.Kenali.route){
+                KenaliAplikasiKamiScreen(navController)
+            }
+
+            composable(Screen.Penggunaan.route){
+                PenggunaanAplikasiKamiScreen(navController)
             }
         }
     }

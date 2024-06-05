@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -47,16 +46,16 @@ fun ScreenLayanan(navController : NavController) {
     val screenLayanan = remember { DataProvider.layanan }
     Box(
         modifier = Modifier
-        .fillMaxSize()
-        .background(color = backgroundLight)
-    ){
+            .fillMaxSize()
+            .background(color = backgroundLight)
+    ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(all = 24.dp)
-        ){
+        ) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
@@ -79,10 +78,12 @@ fun ScreenLayanan(navController : NavController) {
                     lineHeight = 1.27.em,
                     style = TextStyle(
                         fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold),
+                        fontWeight = FontWeight.Bold
+                    ),
                     modifier = Modifier
-                        .wrapContentHeight(align = Alignment.CenterVertically))
-                IconButton(onClick = {  }) { }
+                        .wrapContentHeight(align = Alignment.CenterVertically)
+                )
+                IconButton(onClick = { }) { }
             }
             var text by rememberSaveable { mutableStateOf("") }
             OutlinedTextField(
@@ -92,22 +93,23 @@ fun ScreenLayanan(navController : NavController) {
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_search_24),
-                        contentDescription = "Email") },
+                        contentDescription = "Email"
+                    )
+                },
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .fillMaxWidth()
             )
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
+            ) {
                 items(screenLayanan) { layanan ->
                     LayananItem(layanan = layanan)
                 }
             }
         }
-        }
     }
-
+}
 
 
 @Preview(showBackground = true)

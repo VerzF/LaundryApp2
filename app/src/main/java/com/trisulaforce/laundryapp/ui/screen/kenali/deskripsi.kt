@@ -1,8 +1,5 @@
-package com.trisulaforce.laundryapp.ui.kenali
+package com.trisulaforce.laundryapp.ui.screen.kenali
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -23,20 +20,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
-
-class KenaliAplikasiKamiActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            KenaliAplikasiKamiScreen()
-        }
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun KenaliAplikasiKamiScreen(modifier: Modifier = Modifier) {
+fun KenaliAplikasiKamiScreen(navController: NavController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -54,7 +44,7 @@ fun KenaliAplikasiKamiScreen(modifier: Modifier = Modifier) {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* Handle back navigation */ }) {
+                    IconButton(onClick = { navController.navigateUp() }) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back",
@@ -366,5 +356,6 @@ fun TypeLightMode(modifier: Modifier = Modifier) {
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
 private fun KenaliAplikasiKamiPreview() {
-    KenaliAplikasiKamiScreen()
+    val navController = rememberNavController()
+    KenaliAplikasiKamiScreen(navController)
 }

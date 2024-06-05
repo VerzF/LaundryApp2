@@ -93,7 +93,7 @@ fun Konfirmasi(navController: NavController, modifier: Modifier = Modifier) {
         )
 
         Button(
-            onClick = { navController.navigate(Screen.ScreenBeranda.route) },
+            onClick = { navController.navigate(Screen.Home.route) },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
             shape = RoundedCornerShape(100.dp),
             modifier = Modifier
