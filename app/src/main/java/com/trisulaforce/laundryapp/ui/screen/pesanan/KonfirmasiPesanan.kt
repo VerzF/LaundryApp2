@@ -7,22 +7,18 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
@@ -79,232 +75,264 @@ fun KonfirmasiPesanan(
             .clip(shape = RoundedCornerShape(24.dp))
             .background(backgroundLight)
     ) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Top),
-            modifier = Modifier
-                .padding(24.dp)
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                IconButton(
-                    onClick = { navController.popBackStack() }
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.baseline_arrow_back_24),
-                        contentDescription = "Icons",
-                        tint = Color.Black
-                    )
-                }
-                Text(
-                    text = "Konfirmasi Pesanan",
-                    color = Color.Black,
-                    textAlign = TextAlign.Center,
-                    lineHeight = 1.27.em,
-                    style = TextStyle(
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    modifier = Modifier
-                        .wrapContentHeight(align = Alignment.CenterVertically)
-                )
-                IconButton(onClick = { }) { }
-            }
+        Column {
             Column(
-                verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Top),
+                verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top),
                 modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .height(IntrinsicSize.Max)
+                    .padding(24.dp, 24.dp, 24.dp, 0.dp)
+                    .weight(7f)
             ) {
-                Text(
-                    text = "Lokasi Penjemputan",
-                    style = AppTypography.titleMedium
-                )
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(12.dp)
                 ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.alamat),
-                        contentDescription = "Address Icon",
-                        modifier = Modifier.size(36.dp)
-                    )
+                    IconButton(
+                        onClick = { navController.popBackStack() }
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+                            contentDescription = "Icons",
+                            tint = Color.Black
+                        )
+                    }
                     Text(
-                        text = users.address,
-                        style = AppTypography.bodyMedium
-                    )
-                }
-                Divider()
-                Text(
-                    text = "Detail Pesanan",
-                    style = AppTypography.titleMedium
-                )
-                Column (
-                    verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.Top),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    LazyColumn(
-                        verticalArrangement = Arrangement.spacedBy(12.dp),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    ) {
-                        items(services) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Image(
-                                    painter = painterResource(id = it.image),
-                                    contentDescription = "Service Image",
-                                    modifier = Modifier.size(64.dp)
-                                )
-                                Column(
-                                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                                ) {
-                                    Text(text = it.title, style = AppTypography.bodyMedium)
-                                    Text(text = "2 Hari", style = AppTypography.labelSmall, color = Color.Gray)
-                                }
-                            }
-                        }
-                    }
-                }
-                Text(
-                    text = "Pilih Parfum",
-                    style = AppTypography.titleMedium
-                )
-                val radioOptions = listOf("Serena", "Violet")
-                val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0]) }
-                Row(Modifier.selectableGroup()) {
-                    radioOptions.forEach { text ->
-                        Row(
-                            modifier = Modifier
-                                .selectable(
-                                    selected = (text == selectedOption),
-                                    onClick = { onOptionSelected(text) },
-                                    role = Role.RadioButton
-                                )
-                                .padding(horizontal = 12.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            RadioButton(
-                                selected = (text == selectedOption),
-                                onClick = null
-                            )
-                            Text(
-                                text = text,
-                                style = AppTypography.bodyMedium,
-                                modifier = Modifier.padding(start = 12.dp)
-                            )
-                        }
-                    }
-                }
-                Divider()
-                Text(
-                    text = "Informasi Tambahan",
-                    style = AppTypography.titleMedium
-                )
-                var expanded by remember { mutableStateOf(false) }
-                var selectedText by remember { mutableStateOf("Pilih Jam Pengantaran") }
-                Box(
-                    modifier = Modifier
-                        .wrapContentSize(Alignment.TopStart)
-                ) {
-                    OutlinedCard(
-                        colors = CardDefaults.cardColors(
-                            containerColor = backgroundLight
+                        text = "Konfirmasi Pesanan",
+                        color = Color.Black,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 1.27.em,
+                        style = TextStyle(
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold
                         ),
-                        border = BorderStroke(1.dp, onBackgroundLight),
-                        onClick = { expanded = true }
-                    ) {
+                        modifier = Modifier
+                            .wrapContentHeight(align = Alignment.CenterVertically)
+                    )
+                    IconButton(onClick = { }) { }
+                }
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(24.dp),
+                ) {
+                    item {
+                        Text(
+                            text = "Lokasi Penjemputan",
+                            style = AppTypography.titleMedium,
+                            modifier = Modifier.padding(top = 24.dp)
+                        )
+                    }
+                    item {
                         Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(12.dp)
                         ) {
-                            Text(text = selectedText, style = AppTypography.bodyMedium)
-                            Icon(painterResource(id = R.drawable.ic_chevrondown), contentDescription = "Localized description")
+                            Icon(
+                                painter = painterResource(id = R.drawable.alamat),
+                                contentDescription = "Address Icon",
+                                modifier = Modifier.size(36.dp)
+                            )
+                            Text(
+                                text = users.address,
+                                style = AppTypography.bodyMedium
+                            )
                         }
                     }
-                    DropdownMenu(
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false }
-                    ) {
-                        DropdownMenuItem(
-                            text = { Text(text = "Bebas", style = AppTypography.bodyMedium) },
-                            onClick = {
-                                selectedText = "Bebas"
-                                expanded = false
-                            }
-                        )
-                        DropdownMenuItem(
-                            text = { Text(text = "08.00 - 10.00", style = AppTypography.bodyMedium) },
-                            onClick = {
-                                selectedText = "08.00 - 10.00"
-                                expanded = false
-                            }
-                        )
-                        DropdownMenuItem(
-                            text = { Text(text = "12.00 - 15.00", style = AppTypography.bodyMedium) },
-                            onClick = {
-                                selectedText = "12.00 - 15.00"
-                                expanded = false
-                            }
+                    item {
+                        Divider()
+                    }
+                    item {
+                        Text(
+                            text = "Detail Pesanan",
+                            style = AppTypography.titleMedium
                         )
                     }
-                }
-                Text(
-                    text = "Catatan Tambahan",
-                    style = AppTypography.titleMedium
-                )
-                var text by rememberSaveable { mutableStateOf("") }
-                OutlinedTextField(
-                    value = text,
-                    onValueChange = { text = it },
-                    label = {
+                    items(services) { service ->
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Image(
+                                painter = painterResource(id = service.image),
+                                contentDescription = "Service Image",
+                                modifier = Modifier.size(64.dp)
+                            )
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(4.dp),
+                            ) {
+                                Text(text = service.title, style = AppTypography.bodyMedium)
+                                Text(
+                                    text = "2 Hari",
+                                    style = AppTypography.labelSmall,
+                                    color = Color.Gray
+                                )
+                            }
+                        }
+                    }
+                    item {
                         Text(
-                            text = "Catatan tambahan untuk lokasi penjemputan, jadwal penjemputan, keterangan pakaian, dan lain-lain",
-                            style = AppTypography.bodyMedium,
-                            color = Color.Gray
-                        ) },
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                )
-                Divider()
-                Text(
-                    text = "Persetujuan",
-                    style = AppTypography.titleMedium
-                )
-                var isChecked by remember { mutableStateOf(false) }
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Checkbox(
-                        checked = isChecked,
-                        onCheckedChange = { isChecked = it }
-                    )
-                    Text(
-                        text = "Dengan menekan tombol ini, kamu setuju dengan ketentuan bahwa semua perhitungan berat, ongkir, dan total tagihan merupakan kebijak dari Outlet.",
-                        style = AppTypography.bodyMedium,
-                        modifier = Modifier.clickable { isChecked = !isChecked }
-                    )
+                            text = "Pilih Parfum",
+                            style = AppTypography.titleMedium
+                        )
+                    }
+                    item {
+                        val radioOptions = listOf("Serena", "Violet")
+                        val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0]) }
+                        Row(Modifier.selectableGroup()) {
+                            radioOptions.forEach { text ->
+                                Row(
+                                    modifier = Modifier
+                                        .selectable(
+                                            selected = (text == selectedOption),
+                                            onClick = { onOptionSelected(text) },
+                                            role = Role.RadioButton
+                                        )
+                                        .padding(horizontal = 12.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    RadioButton(
+                                        selected = (text == selectedOption),
+                                        onClick = null
+                                    )
+                                    Text(
+                                        text = text,
+                                        style = AppTypography.bodyMedium,
+                                        modifier = Modifier.padding(start = 12.dp)
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    item {
+                        Divider()
+                    }
+                    item {
+                        Text(
+                            text = "Informasi Tambahan",
+                            style = AppTypography.titleMedium
+                        )
+                    }
+                    item {
+                        var expanded by remember { mutableStateOf(false) }
+                        var selectedText by remember { mutableStateOf("Pilih Jam Pengantaran") }
+                        Box(
+                            modifier = Modifier
+                                .wrapContentSize(Alignment.TopStart)
+                        ) {
+                            OutlinedCard(
+                                colors = CardDefaults.cardColors(
+                                    containerColor = backgroundLight
+                                ),
+                                border = BorderStroke(1.dp, onBackgroundLight),
+                                onClick = { expanded = true }
+                            ) {
+                                Row(
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(12.dp)
+                                ) {
+                                    Text(text = selectedText, style = AppTypography.bodyMedium)
+                                    Icon(painterResource(id = R.drawable.ic_chevrondown), contentDescription = "Localized description")
+                                }
+                            }
+                            DropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = { expanded = false }
+                            ) {
+                                DropdownMenuItem(
+                                    text = { Text(text = "Bebas", style = AppTypography.bodyMedium) },
+                                    onClick = {
+                                        selectedText = "Bebas"
+                                        expanded = false
+                                    }
+                                )
+                                DropdownMenuItem(
+                                    text = { Text(text = "08.00 - 10.00", style = AppTypography.bodyMedium) },
+                                    onClick = {
+                                        selectedText = "08.00 - 10.00"
+                                        expanded = false
+                                    }
+                                )
+                                DropdownMenuItem(
+                                    text = { Text(text = "12.00 - 15.00", style = AppTypography.bodyMedium) },
+                                    onClick = {
+                                        selectedText = "12.00 - 15.00"
+                                        expanded = false
+                                    }
+                                )
+                            }
+                        }
+                    }
+                    item {
+                        Text(
+                            text = "Catatan Tambahan",
+                            style = AppTypography.titleMedium
+                        )
+                    }
+                    item {
+                        var text by rememberSaveable { mutableStateOf("") }
+                        OutlinedTextField(
+                            value = text,
+                            onValueChange = { text = it },
+                            label = {
+                                Text(
+                                    text = "Catatan tambahan pesanan",
+                                    style = AppTypography.bodyMedium,
+                                    color = Color.Gray
+                                ) },
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        )
+                    }
+                    item {
+                        Divider()
+                    }
+                    item {
+                        Text(
+                            text = "Persetujuan",
+                            style = AppTypography.titleMedium
+                        )
+                    }
+                    item {
+                        var isChecked by remember { mutableStateOf(false) }
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Checkbox(
+                                checked = isChecked,
+                                onCheckedChange = { isChecked = it }
+                            )
+                            Text(
+                                text = "Dengan menekan tombol ini, kamu setuju dengan ketentuan bahwa semua perhitungan berat, ongkir, dan total tagihan merupakan kebijak dari Outlet.",
+                                style = AppTypography.bodyMedium,
+                                modifier = Modifier.clickable { isChecked = !isChecked }
+                            )
+                        }
+                    }
+                    item {
+                        Divider()
+                    }
                 }
+            }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.weight(1f)
+            ) {
+                Divider(thickness = 2.dp)
                 Button(
-                    onClick = {  },
+                    onClick = { },
                     colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
-                        vertical = 16.dp),
+                        vertical = 16.dp
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
+                        .padding(24.dp)
                 ) {
                     Text(
                         text = "Pesan Sekarang",
@@ -312,8 +340,8 @@ fun KonfirmasiPesanan(
                         textAlign = TextAlign.Center,
                         lineHeight = 1.43.em,
                         style = AppTypography.labelLarge,
-                        modifier = Modifier
-                            .wrapContentHeight(align = Alignment.CenterVertically))
+                        modifier = Modifier.wrapContentHeight(align = Alignment.CenterVertically)
+                    )
                 }
             }
         }
