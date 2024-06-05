@@ -6,73 +6,73 @@ object DataProvider{
     val layanan :List<Layanan> = listOf(
         Layanan(
             1,
-            R.drawable.laundry1,
+            R.drawable.a1,
             "Kiloan Reguler (Min 3 Kg)",
             8000
         ),
         Layanan(
             2,
-            R.drawable.laundry1,
+            R.drawable.a2,
             "Kiloan Balita (Min 2 Kg)",
             8000
         ),
         Layanan(
             3,
-            R.drawable.laundry1,
+            R.drawable.a3,
             "Setrika (Min 2kg)",
             5000
         ),
         Layanan(
             4,
-            R.drawable.laundry1,
+            R.drawable.a4,
             "Nyuci Kering (Min 2kg)",
             4000
         ),
         Layanan(
             5,
-            R.drawable.laundry1,
+            R.drawable.a5,
             "Sepatu Balita",
             10000
         ),
         Layanan(
             6,
-            R.drawable.laundry1,
+            R.drawable.a6,
             "Sepatu 15+ Tahun",
             15000
         ),
         Layanan(
             7,
-            R.drawable.laundry1,
+            R.drawable.a7,
             "Satuan Gaun",
             25000
         ),
         Layanan(
             8,
-            R.drawable.laundry1,
+            R.drawable.a8,
             "Helm Full Face",
             30000
         ),
         Layanan(
             9,
-            R.drawable.laundry1,
+            R.drawable.a9,
             "Helm Standar",
             25000
         ),
         Layanan(
             10,
-            R.drawable.laundry1,
+            R.drawable.a10,
             "Boneka Kecil",
             15000
         ),
         Layanan(
             11,
-            R.drawable.laundry1,
-            "Boneka Sedang"    ,
+            R.drawable.a11,
+            "Boneka Sedang",
             20000
         ),
         Layanan(
             12,
-            R.drawable.laundry1,
+            R.drawable.a12,
             "Boneka Besar",
             30000
         ),

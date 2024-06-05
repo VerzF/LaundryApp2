@@ -3,14 +3,32 @@ package com.trisulaforce.laundryapp.ui.screen.masuk
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -31,13 +49,11 @@ import com.trisulaforce.laundryapp.ui.navigation.Screen
 fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .fillMaxWidth()
             .background(Color.White)
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
+                .padding(bottom = 24.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -48,6 +64,7 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
                     painter = painterResource(id = R.drawable.tsunamiatas),
                     contentDescription = "Top Image",
                     modifier = Modifier.fillMaxWidth()
+                        .size(190.dp)
                 )
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -56,7 +73,7 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 30.dp)
                 ) {
-                    IconButton(onClick = { navController.navigateUp() }) {
+                    IconButton(onClick = {navController.navigateUp()}) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back Icon",
@@ -78,97 +95,92 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
                 }
             }
             Column(
-                verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Top),
+                verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxSize()
                     .padding(24.dp)
             ) {
-                Text(
-                    text = "Masuk ke akun anda",
-                    color = Color.Black.copy(alpha = 0.8f),
-                    textAlign = TextAlign.Center,
-                    lineHeight = 1.43.em,
-                    style = TextStyle(fontSize = 14.sp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentHeight(align = Alignment.CenterVertically)
-                )
-                var text by rememberSaveable { mutableStateOf("") }
-                OutlinedTextField(
-                    value = text,
-                    onValueChange = { text = it },
-                    label = { Text(text = "Email") },
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.email),
-                            contentDescription = "Email"
-                        )
-                    },
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                )
-                var password by rememberSaveable { mutableStateOf("") }
-                var passwordHidden by remember { mutableStateOf(true) }
-                OutlinedTextField(
-                    value = password,
-                    onValueChange = { password = it },
-                    label = { Text(text = "Kata Sandi") },
-                    leadingIcon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.sandi),
-                            contentDescription = "Kata Sandi"
-                        )
-                    },
-                    trailingIcon = {
-                        IconButton(onClick = { passwordHidden = !passwordHidden }) {
-                            val visibilityIcon =
-                                if (passwordHidden) R.drawable.ic_visibility else R.drawable.ic_visibility_off
-                            val description =
-                                if (passwordHidden) "Show password" else "Hide password"
-                            Icon(
-                                painter = painterResource(id = visibilityIcon),
-                                contentDescription = description
-                            )
-                        }
-                    },
-                    visualTransformation = if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(24.dp)
                 ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        var rememberMe by rememberSaveable { mutableStateOf(false) }
-                        Checkbox(
-                            checked = rememberMe,
-                            onCheckedChange = { rememberMe = it },
-                            modifier = Modifier
-                                .padding(end = 8.dp)
-                        )
-                        Text(text = "Ingat Saya", color = Color.Black.copy(alpha = 0.8f))
-                    }
                     Text(
-                        text = "Lupa Kata Sandi?",
-                        color = Color(0xff465d91),
+                        text = "Masuk ke akun anda",
+                        color = Color.Black.copy(alpha = 0.8f),
+                        textAlign = TextAlign.Center,
+                        lineHeight = 1.43.em,
+                        style = TextStyle(fontSize = 14.sp),
                         modifier = Modifier
-                            .padding(start = 8.dp)
-                            .clickable { navController.navigate(Screen.LupaKataSandi.route) }
+                            .fillMaxWidth()
+                            .wrapContentHeight(align = Alignment.CenterVertically)
                     )
+                    var text by rememberSaveable { mutableStateOf("") }
+                    OutlinedTextField(
+                        value = text,
+                        onValueChange = { text = it },
+                        label = { Text(text = "Email") },
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.email),
+                                contentDescription = "Email"
+                            )
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    var password by rememberSaveable { mutableStateOf("") }
+                    var passwordHidden by remember { mutableStateOf(true) }
+                    OutlinedTextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        label = { Text(text = "Kata Sandi") },
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.sandi),
+                                contentDescription = "Kata Sandi"
+                            )
+                        },
+                        trailingIcon = {
+                            IconButton(onClick = { passwordHidden = !passwordHidden }) {
+                                val visibilityIcon = if (passwordHidden) R.drawable.ic_visibility else R.drawable.ic_visibility_off
+                                val description = if (passwordHidden) "Show password" else "Hide password"
+                                Icon(painter = painterResource(id = visibilityIcon), contentDescription = description)
+                            }
+                        },
+                        visualTransformation = if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            var rememberMe by rememberSaveable { mutableStateOf(false) }
+                            Checkbox(
+                                checked = rememberMe,
+                                onCheckedChange = { rememberMe = it },
+                                modifier = Modifier.padding(end = 8.dp)
+                            )
+                            Text(text = "Ingat Saya", color = Color.Black.copy(alpha = 0.8f))
+                        }
+                        Text(
+                            text = "Lupa Kata Sandi?",
+                            color = Color(0xff465d91),
+                            modifier = Modifier
+                                .padding(start = 8.dp)
+                                .clickable { navController.navigate(Screen.LupaKataSandi.route) }
+                        )
+                    }
                 }
-                Spacer(modifier = Modifier.height(4.dp))
                 Button(
                     onClick = { navController.navigate(Screen.Home.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.9f)
-                        .padding(vertical = 16.dp)
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
                         text = "Masuk",
@@ -193,8 +205,9 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
                     )
                     Text(
                         text = "Daftar",
-                        style = TextStyle(color = Color(0xff465d91), fontWeight = FontWeight.Bold),
-                        modifier = Modifier
+                        color = Color(0xff465d91),
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(start = 4.dp)
                             .clickable{navController.navigate(Screen.DaftarScreen.route)}
                     )
                 }
@@ -203,9 +216,9 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview
+@Preview(widthDp = 360, heightDp = 800)
 @Composable
-fun MasukPreview() {
+private fun MasukPreview() {
     val navController = rememberNavController()
     Masuk(navController, Modifier)
 }
