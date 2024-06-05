@@ -1,5 +1,6 @@
 package com.trisulaforce.laundryapp
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -22,6 +23,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.trisulaforce.laundryapp.model.DataPesanan.orders
+import com.trisulaforce.laundryapp.ui.screen.profil.Editprofil
+import com.trisulaforce.laundryapp.model.Layanan
 import com.trisulaforce.laundryapp.ui.screen.profil.ProfilScreen
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.CekEmail
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.LupaKataSandi
@@ -32,9 +36,13 @@ import com.trisulaforce.laundryapp.ui.screen.daftar.DaftarScreen
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KataSandiBaru
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KonfirmasiKataSandi
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.ResetKataSandi
+import com.trisulaforce.laundryapp.ui.screen.layanan.ScreenLayanan
 import com.trisulaforce.laundryapp.ui.screen.masuk.Masuk
 import com.trisulaforce.laundryapp.ui.screen.notifikasi.Notification
+import com.trisulaforce.laundryapp.ui.screen.pesanan.DetailPesanan
+import com.trisulaforce.laundryapp.ui.screen.pesanan.RiwayatPesanan
 import com.trisulaforce.laundryapp.ui.screen.splashscreen.Onboarding
+import com.trisulaforce.laundryapp.ui.screen.utils.shouldShowBottomBar
 import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 
 @Composable
@@ -44,10 +52,16 @@ fun LaundryApp(
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val services = listOf(
+        Layanan(id = 1, image = R.drawable.laundry1, title = "Nyuci Kering (Min. 2kg)", price = 4000),
+        Layanan(id = 2, image = R.drawable.laundry1, title = "Cuci Selimut", price = 12000)
+    )
 
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.Profile.route) {
+            AnimatedVisibility(
+                visible = currentRoute.shouldShowBottomBar()
+            ) {
                 BottomBar(navController, contentPadding = PaddingValues())
             }
         },
@@ -67,19 +81,19 @@ fun LaundryApp(
             }
 
             composable(Screen.Notification.route){
-                Notification(onBackButtonClick =  { navController.popBackStack() })
+                Notification(navController)
             }
 
             composable(Screen.LupaKataSandi.route){
-                LupaKataSandi(navController = navController, onBackButtonClick = { navController.popBackStack() })
+                LupaKataSandi(navController = navController)
             }
 
             composable(Screen.CekEmail.route){
-                CekEmail(navController = navController, onBackButtonClick = { navController.popBackStack() })
+                CekEmail(navController = navController)
             }
 
             composable(Screen.ResetKataSandi.route){
-                ResetKataSandi(navController = navController, onBackButtonClick = {navController.popBackStack()})
+                ResetKataSandi(navController = navController)
             }
 
             composable(Screen.KonfirmasiKataSandi.route){
@@ -87,11 +101,11 @@ fun LaundryApp(
             }
 
             composable(Screen.KataSandiBaru.route){
-                KataSandiBaru(navController = navController, onBackButtonClick = {navController.popBackStack()})
+                KataSandiBaru(navController)
             }
 
             composable(Screen.Masuk.route){
-                Masuk(navController, Modifier, onBackButtonClick = { navController.popBackStack() })
+                Masuk(navController, Modifier)
             }
 
             composable(Screen.Onboarding.route){
@@ -99,7 +113,23 @@ fun LaundryApp(
             }
 
             composable(Screen.DaftarScreen.route){
-                DaftarScreen(navController, onBackButtonClick = { navController.popBackStack() })
+                DaftarScreen(navController)
+            }
+
+            composable(Screen.Editprofil.route){
+                Editprofil(navController)
+            }
+
+            composable(Screen.DetailPesanan.route){
+                DetailPesanan(navController = navController, initialServices = services)
+            }
+
+            composable(Screen.RiwayatPesanan.route){
+                RiwayatPesanan(navController, orders = orders )
+            }
+
+            composable(Screen.ScreenLayanan.route){
+                ScreenLayanan(navController)
             }
         }
     }

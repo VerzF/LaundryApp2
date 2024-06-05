@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.trisulaforce.laundryapp.Profil
+package com.trisulaforce.laundryapp.ui.screen.profil
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -42,12 +42,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun editprofil(modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
+fun Editprofil(navController: NavController, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -65,7 +67,7 @@ fun editprofil(modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
                 )
             },
             navigationIcon = {
-                IconButton(onClick = onBackButtonClick) {
+                IconButton(onClick = { navController.navigateUp() }) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "Back",
@@ -74,7 +76,7 @@ fun editprofil(modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
                 }
             },
             modifier = Modifier.fillMaxWidth(),
-            colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Transparent)
+            colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -123,7 +125,7 @@ fun editprofil(modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
                 )
             }
             item {
-                SaveButton()
+                SaveButton(navController)
             }
         }
     }
@@ -189,9 +191,9 @@ fun UserProfileInput(
 }
 
 @Composable
-fun SaveButton() {
+fun SaveButton(navController: NavController) {
     Button(
-        onClick = { /* Handle save action */ },
+        onClick = { navController.navigate(Screen.Profile.route) },
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(100.dp))
@@ -213,7 +215,7 @@ fun SaveButton() {
 
 @Preview(showBackground = true, widthDp = 360, heightDp = 800)
 @Composable
-private fun editprofilPreview() {
+private fun EditprofilPreview() {
     val navController = rememberNavController()
-    editprofil(onBackButtonClick = { navController.popBackStack() })
+    Editprofil(navController, Modifier)
 }

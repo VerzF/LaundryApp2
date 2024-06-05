@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -21,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,6 +39,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.model.DataUser.users
+import com.trisulaforce.laundryapp.ui.navigation.Screen
+import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
 fun ProfilScreen(navController: NavController, contentPadding: PaddingValues) {
@@ -55,16 +57,16 @@ fun ProfilScreen(navController: NavController, contentPadding: PaddingValues) {
                     .padding(24.dp)
             ) {
                 Spacer(modifier = Modifier.height(120.dp))
-                ProfileHeader()
+                ProfileHeader(navController)
                 Spacer(modifier = Modifier.height(140.dp))
-                ProfileActions()
+                ProfileActions(navController)
                 Spacer(modifier = Modifier.weight(1f))
             }
         }
     }
 
 @Composable
-fun ProfileHeader() {
+fun ProfileHeader(navController: NavController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box {
             Image(
@@ -75,14 +77,16 @@ fun ProfileHeader() {
                     .clip(CircleShape)
                     .border(2.dp, Color.Black, CircleShape)
             )
-            Icon(
-                painter = painterResource(id = R.drawable.typeedit),
-                contentDescription = "Edit Icon",
-                modifier = Modifier
-                    .size(48.dp)
-                    .align(Alignment.BottomEnd)
-                    .padding(6.dp)
-            )}
+            IconButton(
+                onClick = { navController.navigate(Screen.Editprofil.route) }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_leftarrow),
+                    contentDescription = "Icons",
+                    tint = primaryLight
+                    )
+                }
+            }
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = users.fullName,
@@ -108,10 +112,10 @@ fun ProfileHeader() {
 }
 
 @Composable
-fun ProfileActions() {
+fun ProfileActions(navController: NavController) {
     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Button(
-            onClick = { /* TODO: Add order history functionality */ },
+            onClick = { navController.navigateUp() },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
@@ -138,7 +142,7 @@ fun ProfileActions() {
             )
         }
         Button(
-            onClick = { /* TODO: Add logout functionality */ },
+            onClick = { navController.navigate(Screen.Masuk.route) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
@@ -171,5 +175,5 @@ fun ProfileActions() {
 @Composable
 fun ProfilScreenPreview() {
     val navController = rememberNavController()
-    ProfilScreen(navController = navController, PaddingValues())
+    ProfilScreen(navController, PaddingValues())
 }

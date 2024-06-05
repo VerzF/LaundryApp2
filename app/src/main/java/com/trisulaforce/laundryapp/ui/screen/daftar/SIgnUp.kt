@@ -47,7 +47,7 @@ import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
+fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .requiredWidth(360.dp)
@@ -77,7 +77,7 @@ fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, on
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 30.dp)
                 ) {
-                    IconButton(onClick = onBackButtonClick) {
+                    IconButton(onClick = {navController.navigateUp()}) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back Icon",
@@ -238,5 +238,5 @@ fun DaftarScreen(navController: NavController, modifier: Modifier = Modifier, on
 @Composable
 private fun DaftarPreview() {
     val navController = rememberNavController()
-    DaftarScreen(navController, onBackButtonClick = { navController.popBackStack() })
+    DaftarScreen(navController)
 }

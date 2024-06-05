@@ -45,25 +45,21 @@ import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun CekEmail(navController: NavController, onBackButtonClick: () -> Unit) {
+fun CekEmail(navController: NavController) {
     Box(
         modifier = Modifier
-            .requiredWidth(width = 360.dp)
-            .requiredHeight(height = 800.dp)
-            .clip(shape = RoundedCornerShape(24.dp))
+            .fillMaxSize()
             .background(backgroundLight)
     ) {
         Column(
             modifier = Modifier
-                .requiredWidth(width = 360.dp)
-                .requiredHeight(height = 800.dp)
+                .fillMaxSize()
         ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.Top),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(all = 24.dp)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -72,7 +68,7 @@ fun CekEmail(navController: NavController, onBackButtonClick: () -> Unit) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = onBackButtonClick
+                        onClick = { navController.navigateUp() }
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -117,7 +113,10 @@ fun CekEmail(navController: NavController, onBackButtonClick: () -> Unit) {
                                     .clip(shape = RoundedCornerShape(5.dp))
                                     .border(
                                         BorderStroke(1.dp, onBackgroundLight),
-                                        shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
+                                        shape = RoundedCornerShape(
+                                            bottomEnd = 5.dp,
+                                            bottomStart = 5.dp
+                                        )
                                     )
                             )
                         }
@@ -137,6 +136,7 @@ fun CekEmail(navController: NavController, onBackButtonClick: () -> Unit) {
                             vertical = 16.dp),
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(start = 24.dp, end = 24.dp)
                     ) {
                         Text(
                             text = "Konfirmasi OTP",
@@ -198,6 +198,6 @@ fun CekEmail(navController: NavController, onBackButtonClick: () -> Unit) {
 private fun CekEmailPreview() {
     val navController = rememberNavController()
     LaundryAppTheme {
-        CekEmail(navController = navController, onBackButtonClick = { navController.popBackStack() })
+        CekEmail(navController)
     }
 }

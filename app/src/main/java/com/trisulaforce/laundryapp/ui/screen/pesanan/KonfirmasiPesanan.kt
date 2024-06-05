@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -91,7 +92,7 @@ fun KonfirmasiPesanan(
                     .fillMaxWidth()
             ) {
                 IconButton(
-                    onClick = { navController.popBackStack() }
+                    onClick = { navController.navigateUp() }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_arrow_back_24),
@@ -116,8 +117,8 @@ fun KonfirmasiPesanan(
             Column(
                 verticalArrangement = Arrangement.spacedBy(24.dp, Alignment.Top),
                 modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .height(IntrinsicSize.Max)
+//                   .verticalScroll(rememberScrollState())
+                    .fillMaxSize()
             ) {
                 Text(
                     text = "Lokasi Penjemputan",

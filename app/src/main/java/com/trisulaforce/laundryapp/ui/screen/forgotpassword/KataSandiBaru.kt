@@ -51,7 +51,7 @@ import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
+fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -77,7 +77,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier, o
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = onBackButtonClick
+                        onClick = { navController.navigateUp() }
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -229,7 +229,6 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier, o
 private fun KataSandiBaruPreview() {
     val navController = rememberNavController()
     LaundryAppTheme {
-        KataSandiBaru(navController = navController, onBackButtonClick = {navController.popBackStack()}
-        )
+        KataSandiBaru(navController)
     }
 }

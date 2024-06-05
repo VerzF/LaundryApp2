@@ -41,7 +41,7 @@ import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun ResetKataSandi(navController: NavController, onBackButtonClick: () -> Unit) {
+fun ResetKataSandi(navController: NavController) {
     Box(
         modifier = Modifier
             .requiredWidth(width = 360.dp)
@@ -68,7 +68,7 @@ fun ResetKataSandi(navController: NavController, onBackButtonClick: () -> Unit) 
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = onBackButtonClick
+                        onClick = { navController.navigateUp() }
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -141,5 +141,5 @@ fun ResetKataSandi(navController: NavController, onBackButtonClick: () -> Unit) 
 @Composable
 private fun ResetKataSandiPreview() {
     val navController = rememberNavController()
-    ResetKataSandi(navController, onBackButtonClick = {navController.popBackStack()})
+    ResetKataSandi(navController)
 }

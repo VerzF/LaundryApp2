@@ -136,5 +136,5 @@ fun KonfirmasiKataSandi(navController: NavController, modifier: Modifier = Modif
 @Composable
 private fun KonfirmasiKataSandiPreview() {
     val navController = rememberNavController()
-    KonfirmasiKataSandi(navController = navController, modifier = Modifier)
+    KonfirmasiKataSandi(navController, Modifier)
 }

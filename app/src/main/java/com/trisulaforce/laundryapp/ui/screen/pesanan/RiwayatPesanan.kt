@@ -55,7 +55,7 @@ fun RiwayatPesanan(navController: NavController, modifier: Modifier = Modifier, 
                     .fillMaxWidth()
             ) {
                 IconButton(
-                    onClick = {  }
+                    onClick = { navController.navigateUp() }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -90,6 +90,6 @@ fun RiwayatPesanan(navController: NavController, modifier: Modifier = Modifier, 
 private fun RiwayatPesananPreview() {
     val navController = rememberNavController()
     LaundryAppTheme {
-        RiwayatPesanan(navController = navController, modifier = Modifier, orders = orders)
+        RiwayatPesanan(navController, Modifier, orders = orders)
     }
 }

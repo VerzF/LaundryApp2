@@ -37,6 +37,7 @@ import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.component.DetailPesananItem
 import com.trisulaforce.laundryapp.model.Layanan
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.theme.AppTypography
 import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 import com.trisulaforce.laundryapp.ui.theme.backgroundLight
@@ -71,7 +72,7 @@ fun DetailPesananScreen(
                         .fillMaxWidth()
                 ) {
                     IconButton(
-                        onClick = {}
+                        onClick = {navController.navigateUp()}
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -102,7 +103,7 @@ fun DetailPesananScreen(
                 }
             }
             Button(
-                onClick = { navController.navigate("ResetKataSandi") },
+                onClick = { navController.navigate(Screen.Masuk.route) },
                 colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                 contentPadding = PaddingValues(
                     horizontal = 16.dp,
@@ -143,7 +144,7 @@ fun DetailPesanan(
     )
 }
 
-@Preview(widthDp = 360, heightDp = 800)
+@Preview
 @Composable
 private fun DetailPesananPreview() {
     val navController = rememberNavController()
@@ -152,6 +153,6 @@ private fun DetailPesananPreview() {
         Layanan(id = 2, image = R.drawable.laundry1, title = "Cuci Selimut", price = 12000)
     )
     LaundryAppTheme {
-        DetailPesanan(navController = navController, initialServices = services)
+        DetailPesanan(navController, initialServices = services)
     }
 }

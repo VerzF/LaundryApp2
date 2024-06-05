@@ -10,7 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -28,18 +28,16 @@ import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun Masuk(navController: NavController, modifier: Modifier = Modifier, onBackButtonClick: () -> Unit) {
+fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .requiredWidth(360.dp)
-            .requiredHeight(800.dp)
-            .clip(RoundedCornerShape(24.dp))
+            .fillMaxWidth()
             .background(Color.White)
     ) {
         Column(
             modifier = Modifier
-                .requiredWidth(360.dp)
-                .requiredHeight(800.dp)
+                .fillMaxWidth()
+                .fillMaxHeight()
         ) {
             Box(
                 modifier = Modifier
@@ -58,7 +56,7 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, onBackBut
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp, vertical = 30.dp)
                 ) {
-                    IconButton(onClick = onBackButtonClick) {
+                    IconButton(onClick = { navController.navigateUp() }) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                             contentDescription = "Back Icon",
@@ -158,8 +156,9 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, onBackBut
                     Text(
                         text = "Lupa Kata Sandi?",
                         color = Color(0xff465d91),
-                        modifier = Modifier.padding(start = 8.dp)
-                            .clickable{navController.navigate(Screen.LupaKataSandi.route)}
+                        modifier = Modifier
+                            .padding(start = 8.dp)
+                            .clickable { navController.navigate(Screen.LupaKataSandi.route) }
                     )
                 }
                 Spacer(modifier = Modifier.height(4.dp))
@@ -204,9 +203,9 @@ fun Masuk(navController: NavController, modifier: Modifier = Modifier, onBackBut
     }
 }
 
-@Preview(widthDp = 360, heightDp = 800)
+@Preview
 @Composable
 fun MasukPreview() {
     val navController = rememberNavController()
-    Masuk(navController, Modifier, onBackButtonClick = { navController.popBackStack() })
+    Masuk(navController, Modifier)
 }

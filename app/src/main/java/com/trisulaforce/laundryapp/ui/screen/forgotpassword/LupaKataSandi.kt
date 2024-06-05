@@ -46,18 +46,16 @@ import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun LupaKataSandi(navController: NavController, onBackButtonClick: () -> Unit) {
+fun LupaKataSandi(navController: NavController) {
     Box(
         modifier = Modifier
-            .requiredWidth(width = 360.dp)
-            .requiredHeight(height = 800.dp)
+            .fillMaxSize()
             .clip(shape = RoundedCornerShape(24.dp))
             .background(color = backgroundLight)
     ) {
         Column(
             modifier = Modifier
-                .requiredWidth(width = 360.dp)
-                .requiredHeight(height = 800.dp)
+                .fillMaxSize()
         ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.Top),
@@ -73,7 +71,7 @@ fun LupaKataSandi(navController: NavController, onBackButtonClick: () -> Unit) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = { onBackButtonClick }
+                        onClick = { navController.navigateUp() }
                         ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -165,5 +163,5 @@ fun LupaKataSandi(navController: NavController, onBackButtonClick: () -> Unit) {
 @Composable
 private fun LupaKataSandiPreview() {
     val navController = rememberNavController()
-    LupaKataSandi(navController = navController, onBackButtonClick = { navController.popBackStack() })
+    LupaKataSandi(navController)
 }
