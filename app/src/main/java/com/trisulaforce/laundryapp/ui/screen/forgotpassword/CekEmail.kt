@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.em
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.theme.AppTypography
 import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 import com.trisulaforce.laundryapp.ui.theme.backgroundLight
@@ -44,25 +45,21 @@ import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
+fun CekEmail(navController: NavController) {
     Box(
-        modifier = modifier
-            .requiredWidth(width = 360.dp)
-            .requiredHeight(height = 800.dp)
-            .clip(shape = RoundedCornerShape(24.dp))
+        modifier = Modifier
+            .fillMaxSize()
             .background(backgroundLight)
     ) {
         Column(
             modifier = Modifier
-                .requiredWidth(width = 360.dp)
-                .requiredHeight(height = 800.dp)
+                .fillMaxSize()
         ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.Top),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(all = 24.dp)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -71,7 +68,7 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = {  }
+                        onClick = { navController.navigateUp() }
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -116,7 +113,10 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                                     .clip(shape = RoundedCornerShape(5.dp))
                                     .border(
                                         BorderStroke(1.dp, onBackgroundLight),
-                                        shape = RoundedCornerShape(bottomEnd = 5.dp, bottomStart = 5.dp)
+                                        shape = RoundedCornerShape(
+                                            bottomEnd = 5.dp,
+                                            bottomStart = 5.dp
+                                        )
                                     )
                             )
                         }
@@ -129,13 +129,14 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                 ) {
                     Button(
-                        onClick = { navController.navigate("ResetKataSandi") },
+                        onClick = { navController.navigate(Screen.ResetKataSandi.route) },
                         colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                         contentPadding = PaddingValues(
                             horizontal = 16.dp,
                             vertical = 16.dp),
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(start = 24.dp, end = 24.dp)
                     ) {
                         Text(
                             text = "Konfirmasi OTP",
@@ -197,6 +198,6 @@ fun CekEmail(navController: NavController, modifier: Modifier = Modifier) {
 private fun CekEmailPreview() {
     val navController = rememberNavController()
     LaundryAppTheme {
-        CekEmail(navController = navController, modifier = Modifier)
+        CekEmail(navController)
     }
 }

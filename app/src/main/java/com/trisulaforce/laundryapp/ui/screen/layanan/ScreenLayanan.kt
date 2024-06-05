@@ -1,5 +1,6 @@
 package com.trisulaforce.laundryapp.ui.screen.layanan
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,17 +35,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.component.LayananItem
 import com.trisulaforce.laundryapp.model.DataProvider
+import com.trisulaforce.laundryapp.ui.theme.backgroundLight
 
 @Composable
-fun ScreenLayanan() {
+fun ScreenLayanan(navController : NavController) {
     val screenLayanan = remember { DataProvider.layanan }
-
     Box(
         modifier = Modifier
         .fillMaxSize()
+        .background(color = backgroundLight)
     ){
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top),
@@ -60,7 +64,7 @@ fun ScreenLayanan() {
                     .requiredWidth(width = 312.dp)
             ) {
                 IconButton(
-                    onClick = {  }
+                    onClick = { navController.navigateUp() }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_arrow_back_24),
@@ -94,7 +98,7 @@ fun ScreenLayanan() {
                     .fillMaxWidth()
             )
             LazyColumn(
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                 items(screenLayanan) { layanan ->
                     LayananItem(layanan = layanan)
@@ -109,5 +113,6 @@ fun ScreenLayanan() {
 @Preview(showBackground = true)
 @Composable
 fun ScreenLayananPreview(){
-    ScreenLayanan()
+    val navController = rememberNavController()
+    ScreenLayanan(navController)
 }

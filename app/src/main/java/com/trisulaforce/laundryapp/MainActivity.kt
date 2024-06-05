@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.trisulaforce.laundryapp.ui.screen.layanan.ScreenLayanan
 import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,10 +16,11 @@ class MainActivity : ComponentActivity() {
             LaundryAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ScreenLayanan()
+                    LaundryApp()
                 }
             }
         }

@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.em
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.theme.AppTypography
 import com.trisulaforce.laundryapp.ui.theme.LaundryAppTheme
 import com.trisulaforce.laundryapp.ui.theme.backgroundLight
@@ -76,7 +77,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = {  }
+                        onClick = { navController.navigateUp() }
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -189,7 +190,7 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
                     }
                 }
                 Button(
-                    onClick = {navController.navigate("KonfirmasiKataSandi")},
+                    onClick = {navController.navigate(Screen.KonfirmasiKataSandi.route)},
                     colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -228,6 +229,6 @@ fun KataSandiBaru(navController: NavController, modifier: Modifier = Modifier) {
 private fun KataSandiBaruPreview() {
     val navController = rememberNavController()
     LaundryAppTheme {
-        KataSandiBaru(navController = navController, modifier = Modifier)
+        KataSandiBaru(navController)
     }
 }

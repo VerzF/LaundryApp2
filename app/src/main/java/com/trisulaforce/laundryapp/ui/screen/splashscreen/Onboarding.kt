@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
 fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFinish: () -> Unit) {
@@ -36,9 +37,7 @@ fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFi
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .requiredWidth(360.dp)
-            .requiredHeight(800.dp)
-            .clip(RoundedCornerShape(24.dp))
+            .fillMaxSize()
             .background(
                 Brush.linearGradient(
                     colors = listOf(Color(0xffd9e2ff), Color.White),
@@ -64,16 +63,16 @@ fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFi
                         withStyle(
                             style = SpanStyle(
                                 color = Color(0xff465d91),
-                                fontSize = 22.sp,
+                                fontSize = 28.sp,
                                 fontWeight = FontWeight.Bold
                             )
-                        ) { append("PEKANBARU\n") }
+                        ) { append("HOMIE") }
                         withStyle(
                             style = SpanStyle(
                                 color = Color(0xff465d91),
                                 fontSize = 16.sp
                             )
-                        ) { append("Laundry") }
+                        ) { append("") }
                     },
                     modifier = Modifier.requiredWidth(135.dp)
                 )
@@ -134,7 +133,7 @@ fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFi
                 )
                 Tab(
                     selected = false,
-                    onClick = { onFinish() },
+                    onClick = { navController.navigate(Screen.Masuk.route) },
                     text = {
                         Text(
                             text = "Saya sudah punya akun",
@@ -174,7 +173,7 @@ fun SizeSmall(modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(widthDp = 360, heightDp = 800)
+@Preview(widthDp = 480, heightDp = 800)
 @Composable
 private fun OnboardingPreviewContent() {
     val navController = rememberNavController()

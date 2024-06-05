@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.em
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.theme.AppTypography
 import com.trisulaforce.laundryapp.ui.theme.backgroundLight
 import com.trisulaforce.laundryapp.ui.theme.onBackgroundLight
@@ -45,18 +46,16 @@ import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
-fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
+fun LupaKataSandi(navController: NavController) {
     Box(
-        modifier = modifier
-            .requiredWidth(width = 360.dp)
-            .requiredHeight(height = 800.dp)
+        modifier = Modifier
+            .fillMaxSize()
             .clip(shape = RoundedCornerShape(24.dp))
             .background(color = backgroundLight)
     ) {
         Column(
             modifier = Modifier
-                .requiredWidth(width = 360.dp)
-                .requiredHeight(height = 800.dp)
+                .fillMaxSize()
         ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.Top),
@@ -72,7 +71,7 @@ fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
                         .requiredWidth(width = 312.dp)
                 ) {
                     IconButton(
-                        onClick = {  }
+                        onClick = { navController.navigateUp() }
                         ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_leftarrow),
@@ -127,7 +126,7 @@ fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
                     )
                 }
                 Button(
-                    onClick = { navController.navigate("CekEmail") },
+                    onClick = { navController.navigate(Screen.CekEmail.route) },
                     colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,
@@ -164,5 +163,5 @@ fun LupaKataSandi(navController: NavController, modifier: Modifier = Modifier) {
 @Composable
 private fun LupaKataSandiPreview() {
     val navController = rememberNavController()
-    LupaKataSandi(navController = navController, modifier = Modifier)
+    LupaKataSandi(navController)
 }

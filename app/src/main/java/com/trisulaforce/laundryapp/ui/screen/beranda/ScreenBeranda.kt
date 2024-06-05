@@ -2,6 +2,7 @@ package com.trisulaforce.laundryapp.ui.screen.beranda
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -35,24 +37,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 
 @Composable
-fun Beranda(modifier: Modifier = Modifier) {
+fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .requiredWidth(width = 360.dp)
-            .requiredHeight(height = 800.dp)
-            .clip(shape = RoundedCornerShape(24.dp))
+            .fillMaxWidth()
             .background(color = Color.White)
     ) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxHeight()
-                .requiredWidth(width = 360.dp)
+                .fillMaxWidth()
                 .weight(weight = 1f)
                 .padding(
                     top = 12.dp,
@@ -66,7 +69,7 @@ fun Beranda(modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .requiredWidth(width = 328.dp)
+                        .fillMaxWidth()
                         .rotate(degrees = 0.34f)
                         .padding(bottom = 30.dp)
                 ) {
@@ -178,8 +181,15 @@ fun Beranda(modifier: Modifier = Modifier) {
                         }
                     }
                 }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start)
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+
                 ) {
                     Box(
                         modifier = Modifier
@@ -187,21 +197,33 @@ fun Beranda(modifier: Modifier = Modifier) {
                             .requiredHeight(height = 5.dp)
                             .clip(shape = RoundedCornerShape(100.dp))
                             .background(color = Color(0xff1a1c20)))
+
+                    Spacer(modifier = Modifier.width(2.dp))
+
                     Box(
                         modifier = Modifier
                             .requiredSize(size = 5.dp)
                             .clip(shape = RoundedCornerShape(100.dp))
                             .background(color = Color(0xff3b3b3f)))
+
+                    Spacer(modifier = Modifier.width(2.dp))
+
                     Box(
                         modifier = Modifier
                             .requiredSize(size = 5.dp)
                             .clip(shape = RoundedCornerShape(100.dp))
                             .background(color = Color(0xff3b3b3f)))
+
+                    Spacer(modifier = Modifier.width(2.dp))
+
                     Box(
                         modifier = Modifier
                             .requiredSize(size = 5.dp)
                             .clip(shape = RoundedCornerShape(100.dp))
                             .background(color = Color(0xff3b3b3f)))
+
+                    Spacer(modifier = Modifier.width(2.dp))
+
                     Box(
                         modifier = Modifier
                             .requiredSize(size = 5.dp)
@@ -214,9 +236,7 @@ fun Beranda(modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .padding(
-                            top = 30.dp
-                        )
+                        .padding(top = 16.dp)
                         .fillMaxWidth()
                 ) {
                     Column(
@@ -227,7 +247,8 @@ fun Beranda(modifier: Modifier = Modifier) {
                             .clip(shape = RoundedCornerShape(12.dp))
                             .background(color = Color(0xffd9e2ff))
                             .padding(all = 12.dp)
-                    ) {
+                            .clickable{ navController.navigate(Screen.ScreenLayanan.route)}
+                    ) { 
                         Image(
                             painter = painterResource(id = R.drawable.layananlaundry),
                             contentDescription = "Pekanbaru Laundry (9) 1",
@@ -301,7 +322,7 @@ fun Beranda(modifier: Modifier = Modifier) {
                             .padding()
                     ) {
                         Text(
-                            text = "Deskripsi & Cara Penggunaan",
+                            text = "Deskripsi Aplikasi",
                             color = Color.White,
                             style = TextStyle(
                                 fontSize = 12.sp,
@@ -338,7 +359,7 @@ fun Beranda(modifier: Modifier = Modifier) {
                         verticalArrangement = Arrangement.spacedBy(9.dp, Alignment.CenterVertically)
                     ) {
                         Text(
-                            text = "Charity",
+                            text = "Cara Penggunaan",
                             color = Color.White,
                             style = TextStyle(
                                 fontSize = 12.sp,
@@ -370,5 +391,6 @@ fun Beranda(modifier: Modifier = Modifier) {
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
 private fun BerandaPreview() {
-    Beranda(Modifier)
+    val navController = rememberNavController()
+    Beranda(navController, Modifier)
 }
