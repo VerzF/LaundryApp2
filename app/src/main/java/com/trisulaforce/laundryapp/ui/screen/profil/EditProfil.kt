@@ -201,7 +201,7 @@ fun SaveButton(navController: NavController) {
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91))
     ) {
         Image(
-            painter = painterResource(id = R.drawable.photo_camera_24dp_fill0_wght400_grad0_opsz24),
+            painter = painterResource(id = R.drawable.save),
             contentDescription = "Change Profile Image",
         )
         Spacer(modifier = Modifier.width(8.dp))
