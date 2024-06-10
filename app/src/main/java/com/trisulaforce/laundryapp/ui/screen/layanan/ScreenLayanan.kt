@@ -104,7 +104,7 @@ fun ScreenLayanan(navController : NavController) {
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(screenLayanan) { layanan ->
-                    LayananItem(layanan = layanan)
+                    LayananItem(layanan = layanan, navController)
                 }
             }
         }
