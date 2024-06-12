@@ -12,7 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -71,7 +71,7 @@ fun HomieScreen(modifier: Modifier = Modifier) {
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun HomieContent(showWebView: Boolean, onButtonClick: () -> Unit, modifier: Modifier = Modifier) {
-    val url = "https://massive-integration-chatbot.s3.sng01.cloud-object-storage.appdomain.cloud/chatbot-assistant.html" // URL chatbot
+    val url = "https://chatbothomie.s3.us-south.cloud-object-storage.appdomain.cloud/chatbot_mobile.html" // URL chatbot
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -84,7 +84,7 @@ fun HomieContent(showWebView: Boolean, onButtonClick: () -> Unit, modifier: Modi
                 colors = ButtonDefaults.buttonColors(Color.Blue)
             ) {
                 Icon(
-                    imageVector = Icons.Filled.Chat,
+                    imageVector = Icons.Filled.Home,
                     contentDescription = "icon chatbot",
                     tint = Color.White
                 )
