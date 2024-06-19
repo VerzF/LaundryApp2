@@ -326,15 +326,8 @@ fun TypeLightModePenggunaan(modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = "69%",
-                    color = Color(0xff191c1d),
-                    textAlign = TextAlign.Center,
-                    lineHeight = 10.em,
-                    style = TextStyle(
-                        fontSize = 12.sp
-                    )
-                )
+
+
                 Box(
                     modifier = Modifier
                         .requiredWidth(23.dp)

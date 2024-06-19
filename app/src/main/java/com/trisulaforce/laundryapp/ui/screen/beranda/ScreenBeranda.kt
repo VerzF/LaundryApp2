@@ -41,6 +41,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
+import com.trisulaforce.laundryapp.ui.navigation.Screen.DetailPesanan.route
+import com.trisulaforce.laundryapp.ui.screen.chatbot.chatbotScreen
 
 
 @Composable
@@ -272,6 +274,7 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                             .clip(shape = RoundedCornerShape(12.dp))
                             .background(color = Color(0xffdbe2f9))
                             .padding(all = 12.dp)
+                            .clickable{ navController.navigate(Screen.chatbot.route)}
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.messagebot),
