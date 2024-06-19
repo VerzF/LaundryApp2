@@ -111,7 +111,7 @@ fun Onboarding(navController: NavController, modifier: Modifier = Modifier, onFi
             ) {
                 Tab(
                     selected = false,
-                    onClick = { onFinish() },
+                    onClick = { navController.navigate(Screen.Masuk.route) },
                     text = {
                         Text(
                             text = "Mulai sekarang",

@@ -274,7 +274,7 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                             .clip(shape = RoundedCornerShape(12.dp))
                             .background(color = Color(0xffdbe2f9))
                             .padding(all = 12.dp)
-                            .clickable{ navController.navigate(Screen.chatbot.route)}
+                            .clickable{ navController.navigate(Screen.chatbotScreen.route)}
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.messagebot),

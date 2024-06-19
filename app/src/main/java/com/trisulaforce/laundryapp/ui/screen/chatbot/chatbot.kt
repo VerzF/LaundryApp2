@@ -38,7 +38,7 @@ import androidx.navigation.compose.rememberNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun chatbotScreen(navController: NavController, modifier: Modifier = Modifier) {
+fun chatbotScreen() {
     // Variabel state untuk melacak apakah WebView harus ditampilkan
     var showWebView by remember { mutableStateOf(false) }
 
@@ -131,6 +131,5 @@ fun chatbotScreen(showWebView: Boolean, onButtonClick: () -> Unit, modifier: Mod
 @Composable
 private fun HomieScreenPreview() {
     // Fungsi pratinjau untuk HomieScreen
-    val navController = rememberNavController()
-    chatbotScreen(navController = navController)
+    chatbotScreen()
 }

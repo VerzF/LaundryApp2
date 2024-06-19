@@ -153,7 +153,7 @@ fun LaundryApp(
                 PenggunaanAplikasiKamiScreen(navController)
             }
             composable(Screen.chatbotScreen.route) {
-                chatbotScreen(navController)
+                chatbotScreen()
             }
             }
         }
