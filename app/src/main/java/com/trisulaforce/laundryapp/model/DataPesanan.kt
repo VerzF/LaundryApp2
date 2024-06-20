@@ -3,7 +3,7 @@ package com.trisulaforce.laundryapp.model
 object DataPesanan {
     private val layanan1 = Layanan(id = 1, image = 0, title = "Kiloan Reguler", price = 8000)
     private val layanan2 = Layanan(id = 2, image = 0, title = "Cuci Selimut", price = 12000)
-
+//Dummy Data
     fun calculateTotalPrice(services: List<Layanan>): Int {
         return services.sumOf { it.price }
     }

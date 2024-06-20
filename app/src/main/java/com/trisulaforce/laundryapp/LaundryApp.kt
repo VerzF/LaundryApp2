@@ -33,6 +33,7 @@ import com.trisulaforce.laundryapp.ui.screen.forgotpassword.LupaKataSandi
 import com.trisulaforce.laundryapp.ui.navigation.NavigationItem
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.screen.beranda.Beranda
+import com.trisulaforce.laundryapp.ui.screen.chatbot.chatbotScreen
 import com.trisulaforce.laundryapp.ui.screen.daftar.DaftarScreen
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KataSandiBaru
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KonfirmasiKataSandi
@@ -151,9 +152,13 @@ fun LaundryApp(
             composable(Screen.Penggunaan.route){
                 PenggunaanAplikasiKamiScreen(navController)
             }
+            composable(Screen.chatbotScreen.route) {
+                chatbotScreen()
+            }
+            }
         }
     }
-}
+
 
 @Composable
 private fun BottomBar(

@@ -93,7 +93,7 @@ fun LayananItem(
                 modifier = Modifier.padding(8.dp)
             ) {
                 IconButton(
-                        onClick = {navController.navigate(Screen.DetailPesanan.route)},
+                    onClick = {navController.navigate(Screen.DetailPesanan.route)},
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_add_circle),

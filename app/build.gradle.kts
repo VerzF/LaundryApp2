@@ -64,8 +64,13 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.text.google.fonts)
-    implementation(libs.material)
+//    implementation ("com.ibm.cloud:ibm-watson:9.4.1") //Gradle ibm
+//    implementation("androidx.webkit:webkit:1.2.0") //webkit
+
+//    implementation(libs.material)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.monitor)
+    implementation(libs.generativeai)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,4 +78,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+//    implementation ("androidx.compose.material3:material3-icons-core:1.0.0-alpha01")
+//    implementation ("androidx.compose.material3:material3-icons-extended:1.0.0-alpha01")
+
+
+
+
 }

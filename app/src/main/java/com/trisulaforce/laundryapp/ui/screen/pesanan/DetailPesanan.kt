@@ -103,7 +103,7 @@ fun DetailPesananScreen(
                 }
             }
             Button(
-                onClick = { navController.navigate(Screen.KonfirmasiPesanan.route) },
+                onClick = { navController.navigate(Screen.Konfirmasi.route) },
                 colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                 contentPadding = PaddingValues(
                     horizontal = 16.dp,
