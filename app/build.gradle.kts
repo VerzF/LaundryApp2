@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -64,6 +66,15 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.text.google.fonts)
+
+//hilt
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    implementation(libs.firebase.auth.ktx)
+    kapt("com.google.dagger:hilt-compiler:2.48.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+//firebase
+//google auth
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 //    implementation ("com.ibm.cloud:ibm-watson:9.4.1") //Gradle ibm
 //    implementation("androidx.webkit:webkit:1.2.0") //webkit
 

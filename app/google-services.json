@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "230460924379",
+    "project_id": "laundryapp-42ef1",
+    "storage_bucket": "laundryapp-42ef1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230460924379:android:a8e9a4138cf217250c47fe",
+        "android_client_info": {
+          "package_name": "com.trisulaforce.laundryapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1hOQBbXPl42L5pPMcMis3aUScubYgoDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

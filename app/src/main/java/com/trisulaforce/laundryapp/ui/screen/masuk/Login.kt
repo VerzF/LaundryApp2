@@ -46,7 +46,8 @@ import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun Masuk(navController: NavController, modifier: Modifier = Modifier) {
+fun Masuk(navController: NavController,
+          modifier: Modifier = Modifier,) {
     Box(
         modifier = modifier
             .background(Color.White)
