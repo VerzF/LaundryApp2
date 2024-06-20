@@ -27,16 +27,20 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.model.Layanan
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.theme.AppTypography
 import com.trisulaforce.laundryapp.ui.theme.onBackgroundLight
+import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 import com.trisulaforce.laundryapp.ui.theme.surfaceContainerLight
 
 @Composable
 fun LayananItem(
     layanan: Layanan,
+    navController : NavController
 ) {
     var itemCount by remember { mutableIntStateOf(0)}
     Card(
@@ -63,7 +67,7 @@ fun LayananItem(
                 LayananImage(items = layanan)
                 Column(
                     verticalArrangement = Arrangement.spacedBy(4.dp),
-                    modifier = Modifier.requiredWidth(160.dp)
+                    modifier = Modifier.requiredWidth(100.dp)
                 ) {
                     Text(
                         text = layanan.title,
@@ -89,7 +93,7 @@ fun LayananItem(
                 modifier = Modifier.padding(8.dp)
             ) {
                 IconButton(
-                    onClick = {itemCount++},
+                        onClick = {navController.navigate(Screen.DetailPesanan.route)},
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_add_circle),

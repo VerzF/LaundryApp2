@@ -115,7 +115,7 @@ fun ProfileHeader(navController: NavController) {
 fun ProfileActions(navController: NavController) {
     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Button(
-            onClick = { navController.navigateUp() },
+            onClick = { navController.navigate(Screen.RiwayatPesanan.route) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
