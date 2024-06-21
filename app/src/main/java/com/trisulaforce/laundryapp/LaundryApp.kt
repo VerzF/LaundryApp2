@@ -34,7 +34,7 @@ import com.trisulaforce.laundryapp.ui.navigation.NavigationItem
 import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.screen.beranda.Beranda
 import com.trisulaforce.laundryapp.ui.screen.chatbot.chatbotScreen
-import com.trisulaforce.laundryapp.ui.screen.daftar.DaftarScreen
+import com.trisulaforce.laundryapp.ui.screen.forgotpassword.daftar.DaftarScreen
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KataSandiBaru
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.KonfirmasiKataSandi
 import com.trisulaforce.laundryapp.ui.screen.forgotpassword.ResetKataSandi
