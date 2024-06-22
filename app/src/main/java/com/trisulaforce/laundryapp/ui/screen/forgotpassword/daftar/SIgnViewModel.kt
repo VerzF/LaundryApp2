@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.trisulaforce.laundryapp.data.firebase.AuthRepository
 import com.trisulaforce.laundryapp.data.firebase.Resource
-import com.trisulaforce.laundryapp.ui.screen.masuk.LoginState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -15,45 +14,23 @@ import javax.inject.Inject
 class SIgnViewModel @Inject constructor(
     private val repository: AuthRepository
 ) : ViewModel() {
-    private val _state = Channel<SIgnState>()
-    val state = _state.receiveAsFlow()
+    private val _state = Channel<daftarState>()
+    val SignUpState = _state.receiveAsFlow()
 
-    fun loginUser(email: String, password: String, home: () -> Unit) {
+    fun registerUser(email: String, password: String) {
         viewModelScope.launch {
             repository.loginUser(email = email, password = password).collect { result ->
                 when (result) {
                     is Resource.Success -> {
-                        _state.send(SIgnState(success = "Daftar Berhasil"))
-                        home()
+                        _state.send(daftarState(success = "Daftar Berhasil"))
                     }
 
                     is Resource.Loading -> {
-                        _state.send(SIgnState(loading = true))
+                        _state.send(daftarState(loading = true))
                     }
 
                     is Resource.Error -> {
-                        _state.send(SIgnState(error = result.message))
-                    }
-                }
-            }
-        }
-    }
-
-    fun registerUser(email: String, password: String, home: () -> Unit) {
-        viewModelScope.launch {
-            repository.registerUser(email = email, password = password).collect { result ->
-                when (result) {
-                    is Resource.Success -> {
-                        _state.send(SIgnState(success = "Register Berhasil"))
-                        home()
-                    }
-
-                    is Resource.Loading -> {
-                        _state.send(SIgnState(loading = true))
-                    }
-
-                    is Resource.Error -> {
-                        _state.send(SIgnState(error = result.message))
+                        _state.send(daftarState(error = result.message))
                     }
                 }
             }
