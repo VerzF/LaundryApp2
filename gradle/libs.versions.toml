@@ -18,6 +18,8 @@ activity = "1.8.0"
 monitor = "1.6.1"
 generativeai = "0.7.0"
 firebaseAuthKtx = "23.0.0"
+googleServices = "4.4.2"
+firebaseAuth = "23.0.0"
 
 
 [libraries]
@@ -45,6 +47,8 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "monitor" }
 generativeai = { group = "com.google.ai.client.generativeai", name = "generativeai", version.ref = "generativeai" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 
 [plugins]
