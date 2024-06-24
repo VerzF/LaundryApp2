@@ -5,17 +5,18 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,9 +32,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
+import com.trisulaforce.laundryapp.component.NotifikasiItem
+import com.trisulaforce.laundryapp.model.DataNotifikasi
 
 @Composable
 fun Notification(navController: NavController) {
+    val screenNotifikasi = remember { DataNotifikasi.notifikasi }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -79,6 +83,13 @@ fun Notification(navController: NavController) {
                             .wrapContentHeight(align = Alignment.CenterVertically)
                     )
                     IconButton(onClick = { }) { }
+                }
+            }
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(screenNotifikasi) { notifikasi ->
+                    NotifikasiItem(notifikasi = notifikasi)
                 }
             }
         }

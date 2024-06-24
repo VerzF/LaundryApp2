@@ -19,7 +19,7 @@ class SIgnViewModel @Inject constructor(
 
     fun registerUser(email: String, password: String) {
         viewModelScope.launch {
-            repository.loginUser(email = email, password = password).collect { result ->
+            repository.registerUser(email = email, password = password).collect { result ->
                 when (result) {
                     is Resource.Success -> {
                         _state.send(daftarState(success = "Daftar Berhasil"))
