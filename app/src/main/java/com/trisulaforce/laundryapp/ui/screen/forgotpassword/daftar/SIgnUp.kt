@@ -208,7 +208,9 @@ fun DaftarScreen(
             Button(
                 onClick = {
                     coroutineScope.launch {
-                        viewModel.registerUser(email, password)
+                        viewModel.registerUser(email, password){
+                            navController.navigate(Screen.Home.route)
+                        }
                     }
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),

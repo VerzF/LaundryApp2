@@ -17,12 +17,13 @@ class SIgnViewModel @Inject constructor(
     private val _state = Channel<daftarState>()
     val SignUpState = _state.receiveAsFlow()
 
-    fun registerUser(email: String, password: String) {
+    fun registerUser(email: String, password: String, Masuk: () -> Unit) {
         viewModelScope.launch {
             repository.registerUser(email = email, password = password).collect { result ->
                 when (result) {
                     is Resource.Success -> {
                         _state.send(daftarState(success = "Daftar Berhasil"))
+                        Masuk()
                     }
 
                     is Resource.Loading -> {

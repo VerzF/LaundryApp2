@@ -46,6 +46,7 @@ import com.trisulaforce.laundryapp.ui.screen.masuk.Masuk
 import com.trisulaforce.laundryapp.ui.screen.menunggu.Konfirmasi
 import com.trisulaforce.laundryapp.ui.screen.notifikasi.Notification
 import com.trisulaforce.laundryapp.ui.screen.pesanan.DetailPesanan
+import com.trisulaforce.laundryapp.ui.screen.pesanan.KonfirmasiPesanan
 import com.trisulaforce.laundryapp.ui.screen.pesanan.RiwayatPesanan
 import com.trisulaforce.laundryapp.ui.screen.splashscreen.Onboarding
 import com.trisulaforce.laundryapp.ui.screen.utils.shouldShowBottomBar
@@ -153,8 +154,13 @@ fun LaundryApp(
             composable(Screen.Penggunaan.route){
                 PenggunaanAplikasiKamiScreen(navController)
             }
+
             composable(Screen.chatbotScreen.route) {
                 chatbotScreen()
+            }
+
+            composable(Screen.KonfirmasiPesanan.route) {
+                KonfirmasiPesanan(navController = navController, services = services)
             }
             }
         }
