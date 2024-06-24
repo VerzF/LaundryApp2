@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -34,10 +35,15 @@ import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.component.NotifikasiItem
 import com.trisulaforce.laundryapp.model.DataNotifikasi
+import com.trisulaforce.laundryapp.model.DataNotifikasi.notifikasi
+import com.trisulaforce.laundryapp.model.Notifikasi
+import com.trisulaforce.laundryapp.ui.navigation.Screen
 
 @Composable
-fun Notification(navController: NavController) {
-    val screenNotifikasi = remember { DataNotifikasi.notifikasi }
+fun Notification(
+    navController: NavController,
+    notifications : List<Notifikasi>
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -45,50 +51,45 @@ fun Notification(navController: NavController) {
             .background(Color.White)
     ) {
         Column(
+            verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.Top),
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
+                .padding(all = 24.dp)
         ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(48.dp, Alignment.Top),
-                horizontalAlignment = Alignment.CenterHorizontally,
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(all = 24.dp)
+                    .fillMaxWidth()
             ) {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .requiredWidth(width = 312.dp)
+                IconButton(
+                    onClick = { navController.navigate(Screen.Home.route) }
                 ) {
-                    IconButton(
-                        onClick = { navController.navigateUp() }
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_leftarrow),
-                            contentDescription = "Icons",
-                            tint = Color(0xff465d91)
-                        )
-                    }
-                    Text(
-                        text = "Notifikasi",
-                        color = Color(0xff465d91),
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.27.em,
-                        style = TextStyle(
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight.Bold
-                        ),
-                        modifier = Modifier
-                            .wrapContentHeight(align = Alignment.CenterVertically)
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_leftarrow),
+                        contentDescription = "Icons",
+                        tint = Color(0xff465d91)
                     )
-                    IconButton(onClick = { }) { }
                 }
+                Text(
+                    text = "Notifikasi",
+                    color = Color(0xff465d91),
+                    textAlign = TextAlign.Center,
+                    lineHeight = 1.27.em,
+                    style = TextStyle(
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .wrapContentHeight(align = Alignment.CenterVertically)
+                )
+                IconButton(onClick = { }) { }
             }
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                items(screenNotifikasi) { notifikasi ->
+                items(notifications) { notifikasi ->
                     NotifikasiItem(notifikasi = notifikasi)
                 }
             }
@@ -99,5 +100,5 @@ fun Notification(navController: NavController) {
 @Composable
 fun NotificationPreview() {
     val navController = rememberNavController()
-    Notification(navController)
+    Notification(navController, notifikasi)
 }

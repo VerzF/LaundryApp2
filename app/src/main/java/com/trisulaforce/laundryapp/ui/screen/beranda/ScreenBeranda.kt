@@ -41,9 +41,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
-import com.trisulaforce.laundryapp.ui.navigation.Screen.DetailPesanan.route
-import com.trisulaforce.laundryapp.ui.screen.chatbot.chatbotScreen
-
 
 @Composable
 fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
@@ -151,7 +148,7 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                         }
                         item {
                             Image(
-                                painter = painterResource(id = R.drawable.frame54),
+                                painter = painterResource(id = R.drawable.frame53),
                                 contentDescription = "Frame 54",
                                 modifier = Modifier
                                     .requiredWidth(width = 312.dp)
@@ -159,7 +156,7 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                         }
                         item {
                             Image(
-                                painter = painterResource(id = R.drawable.frame55),
+                                painter = painterResource(id = R.drawable.frame53),
                                 contentDescription = "Frame 55",
                                 modifier = Modifier
                                     .requiredWidth(width = 312.dp)
@@ -167,7 +164,7 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                         }
                         item {
                             Image(
-                                painter = painterResource(id = R.drawable.frame56),
+                                painter = painterResource(id = R.drawable.frame53),
                                 contentDescription = "Frame 56",
                                 modifier = Modifier
                                     .requiredWidth(width = 312.dp)
@@ -175,7 +172,7 @@ fun Beranda(navController: NavController, modifier: Modifier = Modifier) {
                         }
                         item {
                             Image(
-                                painter = painterResource(id = R.drawable.frame57),
+                                painter = painterResource(id = R.drawable.frame53),
                                 contentDescription = "Frame 57",
                                 modifier = Modifier
                                     .requiredWidth(width = 312.dp)

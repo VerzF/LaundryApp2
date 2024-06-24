@@ -8,4 +8,4 @@ data class Notifikasi (
     val title: String,
     val text: String,
     val tanggal: String
-    ) : Serializable
+) : Serializable

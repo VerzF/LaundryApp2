@@ -23,6 +23,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.trisulaforce.laundryapp.model.DataNotifikasi.notifikasi
 import com.trisulaforce.laundryapp.ui.screen.menunggu.Menunggu
 import com.trisulaforce.laundryapp.model.DataPesanan.orders
 import com.trisulaforce.laundryapp.ui.screen.profil.Editprofil
@@ -86,7 +87,7 @@ fun LaundryApp(
             }
 
             composable(Screen.Notification.route){
-                Notification(navController)
+                Notification(navController, notifikasi)
             }
 
             composable(Screen.LupaKataSandi.route){

@@ -3,7 +3,7 @@ package com.trisulaforce.laundryapp.model
 import com.trisulaforce.laundryapp.R
 
 object DataNotifikasi {
-    val notifikasi :List<Notifikasi> = listOf(
+    val notifikasi = listOf(
         Notifikasi(
             id = 1,
             R.drawable.konfirmasi,

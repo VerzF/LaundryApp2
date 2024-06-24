@@ -196,7 +196,9 @@ fun Masuk(navController: NavController,
                 Button(
                     onClick = {
                         coroutineScope.launch {
-                            viewModel.loginUser(email, password)
+                            viewModel.loginUser(email, password) {
+                                navController.navigate(Screen.Home.route)
+                            }
                         }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),

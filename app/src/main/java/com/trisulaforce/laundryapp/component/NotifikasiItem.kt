@@ -31,9 +31,6 @@ fun NotifikasiItem (
     notifikasi: Notifikasi
 ){
     Card(
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 12.dp
-        ),
         colors = CardDefaults.cardColors(
             containerColor = surfaceContainerLight
         ),
@@ -54,24 +51,22 @@ fun NotifikasiItem (
                 NotifikasiImage(items = notifikasi)
                 Column(
                     verticalArrangement = Arrangement.spacedBy(4.dp),
-                    modifier = Modifier.requiredWidth(100.dp)
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
                         text = notifikasi.title,
                         color = onBackgroundLight,
                         fontWeight = FontWeight.Bold,
-                        style = AppTypography.labelLarge
+                        style = AppTypography.titleSmall
                     )
                     Text(
                         text = notifikasi.text,
                         color = onBackgroundLight,
-                        fontWeight = FontWeight.Bold,
-                        style = AppTypography.labelSmall
+                        style = AppTypography.bodySmall
                     )
 
                     Text(text = notifikasi.tanggal,
                         color = onBackgroundLight,
-                        fontWeight = FontWeight.Bold,
                         style = AppTypography.labelSmall
                     )
                 }
