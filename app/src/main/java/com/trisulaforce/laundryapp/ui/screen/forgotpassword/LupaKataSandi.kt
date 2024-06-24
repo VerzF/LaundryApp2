@@ -1,5 +1,6 @@
 package com.trisulaforce.laundryapp.ui.screen.forgotpassword
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +29,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -47,10 +48,11 @@ import com.trisulaforce.laundryapp.ui.theme.primaryLight
 
 @Composable
 fun LupaKataSandi(navController: NavController) {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .clip(shape = RoundedCornerShape(24.dp))
             .background(color = backgroundLight)
     ) {
         Column(
@@ -126,7 +128,10 @@ fun LupaKataSandi(navController: NavController) {
                     )
                 }
                 Button(
-                    onClick = { navController.navigate(Screen.CekEmail.route) },
+                    onClick = {
+                        navController.navigate(Screen.CekEmail.route)
+                        Toast.makeText(context, "Kode OTP telah dikirimkan ke Email Anda", Toast.LENGTH_LONG).show()
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = primaryLight),
                     contentPadding = PaddingValues(
                         horizontal = 16.dp,

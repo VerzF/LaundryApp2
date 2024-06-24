@@ -1,6 +1,8 @@
 package com.trisulaforce.laundryapp.component
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,42 +18,42 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.model.Layanan
-import com.trisulaforce.laundryapp.ui.navigation.Screen
 import com.trisulaforce.laundryapp.ui.theme.AppTypography
 import com.trisulaforce.laundryapp.ui.theme.onBackgroundLight
-import com.trisulaforce.laundryapp.ui.theme.onPrimaryLight
 import com.trisulaforce.laundryapp.ui.theme.primaryLight
 import com.trisulaforce.laundryapp.ui.theme.surfaceContainerLight
 
 @Composable
 fun LayananItem(
     layanan: Layanan,
-    navController : NavController
+    isSelected: Boolean,
+    onSelect: (Layanan) -> Unit
 ) {
-    var itemCount by remember { mutableIntStateOf(0)}
+    val borderColor = if (isSelected) Color(0xFF83AAFF) else Color.Transparent
+    val icon = if (isSelected) R.drawable.ic_check_circle else R.drawable.ic_add_circle
+    val iconTint = if (isSelected) Color(0xFF83AAFF) else primaryLight
+
     Card(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 12.dp
         ),
+        border = BorderStroke(4.dp, borderColor),
         colors = CardDefaults.cardColors(
             containerColor = surfaceContainerLight
         ),
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
+            .clickable { onSelect(layanan) }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -93,12 +95,12 @@ fun LayananItem(
                 modifier = Modifier.padding(8.dp)
             ) {
                 IconButton(
-                    onClick = {navController.navigate(Screen.DetailPesanan.route)},
+                    onClick = { onSelect(layanan) },
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_add_circle),
-                        contentDescription = "Delete",
-                        tint = primaryLight,
+                        painter = painterResource(id = icon),
+                        contentDescription = "Select",
+                        tint = iconTint,
                         modifier = Modifier.size(48.dp)
                     )
                 }
@@ -108,7 +110,7 @@ fun LayananItem(
 }
 
 @Composable
-private fun LayananImage(items:Layanan){
+private fun LayananImage(items: Layanan) {
     Image(
         painter = painterResource(id = items.image),
         contentDescription = null,
