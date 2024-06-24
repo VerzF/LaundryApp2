@@ -51,7 +51,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.trisulaforce.laundryapp.R
 import com.trisulaforce.laundryapp.ui.navigation.Screen
-import com.trisulaforce.laundryapp.ui.screen.forgotpassword.daftar.SIgnViewModel
 import kotlinx.coroutines.launch
 
 @Composable
@@ -62,6 +61,8 @@ fun Masuk(navController: NavController,
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
     val state = viewModel.loginState.collectAsState(initial = null)
+    var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
 
     Box(
         modifier = modifier
@@ -131,7 +132,7 @@ fun Masuk(navController: NavController,
                             .fillMaxWidth()
                             .wrapContentHeight(align = Alignment.CenterVertically)
                     )
-                    var email by rememberSaveable { mutableStateOf("") }
+
                     OutlinedTextField(
                         value = email,
                         onValueChange = { email = it },
@@ -145,7 +146,6 @@ fun Masuk(navController: NavController,
                         shape = RoundedCornerShape(12.dp),
                         modifier = Modifier.fillMaxWidth()
                     )
-                    var password by rememberSaveable { mutableStateOf("") }
                     var passwordHidden by remember { mutableStateOf(true) }
                     OutlinedTextField(
                         value = password,
@@ -195,9 +195,9 @@ fun Masuk(navController: NavController,
                 }
                 Button(
                     onClick = {
-                        /*coroutineScope.launch {
+                        coroutineScope.launch {
                             viewModel.loginUser(email, password)
-                        }*/
+                        }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xff465d91)),
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
