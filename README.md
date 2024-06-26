@@ -52,6 +52,7 @@
 * Pandas
 * Numpy
 * Matplotlib
+* Watsonx.Assistant from IBM Cloud
 
 ### Report BrandBook View 🤖
 ```bash
