@@ -1,4 +1,4 @@
-# Capstone Project Massive Collaboration: Snap, Swipe, Sparkle with HOMIE - Your Partner for a Hassle-Free Life🌈🪄 
+# Capstone Project Massive Collaboration: Snap, Swipe, Sparkle with HOMIE - Your Partner for a Hassle Free Life🌈🪄 
 
  <img align="right" alt="coding" width="500" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjk1cW80NDNlZzYxbGgzMzB1cmc5aGFmdXh5YnhhdXludDhmeTB1cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rMH2s6YFl91DYNRs7t/giphy.gif">
   
@@ -51,4 +51,9 @@
 * Tensorflow
 * Pandas
 * Numpy
-* Matplotlib 
+* Matplotlib
+
+### Report BrandBook View 🤖
+```bash
+https://drive.google.com/file/d/1_Ej3imPVEqFRXqFvMZ9L9VJ1gOmAn8Cs/view?usp=sharing
+```
